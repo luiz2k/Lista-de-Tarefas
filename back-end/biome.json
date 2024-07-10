@@ -1,19 +1,16 @@
 {
-  "linter": {
-    "rules": {
-      "correctness": {
-        "noUnusedVariables": {
-          "level": "error",
-          "fix": "none"
-        },
-        "noUnusedImports": {
-          "level": "error",
-          "fix": "none"
-        }
-      }
-    }
-  },
-  "organizeImports": {
-    "enabled": true
-  }
+	"linter": {
+		"rules": {
+			"correctness": {
+				"noUnusedVariables": {
+					"level": "error",
+					"fix": "none"
+				},
+				"noUnusedImports": {
+					"level": "error",
+					"fix": "none"
+				}
+			}
+		}
+	}
 }

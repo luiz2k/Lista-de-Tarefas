@@ -1,4 +1,4 @@
-import { BadRequestError } from "../helpers/errorHandler";
+import { BadRequestError, UnauthorizedError } from "../helpers/errorHandler";
 import { loginSchema, refreshTokenSchema } from "../validations/authValidation";
 
 import type { Request, Response } from "express";
@@ -11,7 +11,7 @@ export class AuthController {
 		const isValidData = loginSchema.safeParse(req.body);
 
 		if (!isValidData.success) {
-			throw new BadRequestError("E-mail ou senha inválidos");
+			throw new UnauthorizedError("E-mail ou senha inválidos");
 		}
 
 		const token = await this.authService.login(isValidData.data);

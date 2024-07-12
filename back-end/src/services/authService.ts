@@ -16,13 +16,13 @@ export class AuthService implements IAuthService {
 		const user = await this.userRepository.findByEmail(data.email);
 
 		if (!user) {
-			throw new BadRequestError("E-mail ou senha inválidos");
+			throw new UnauthorizedError("E-mail ou senha inválidos");
 		}
 
 		const isValidPassword = bcrypt.compareSync(data.password, user.password);
 
 		if (!isValidPassword) {
-			throw new BadRequestError("E-mail ou senha inválidos");
+			throw new UnauthorizedError("E-mail ou senha inválidos");
 		}
 
 		const userId = String(user._id);
@@ -36,7 +36,7 @@ export class AuthService implements IAuthService {
 		const payload = await this.jwtService.verifyToken(token);
 
 		if (!payload) {
-			throw new UnauthorizedError("Token inválido.");
+			throw new BadRequestError("Token inválido.");
 		}
 
 		const newToken = await this.jwtService.refreshToken(payload.id, token);

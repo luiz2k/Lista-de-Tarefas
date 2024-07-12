@@ -17,7 +17,9 @@ export class TaskController {
 		const isValidData = createTaskSchema.safeParse(req.body);
 
 		if (!isValidData.success) {
-			throw new BadRequestError("Erro na validação dos dados.");
+			const errors = isValidData.error.issues;
+
+			throw new BadRequestError("Erro na validação dos dados.", errors);
 		}
 
 		const task = await this.taskService.create({ ...isValidData.data, userId });
@@ -34,7 +36,9 @@ export class TaskController {
 		const isValidId = objectIdSchema.safeParse(req.params.id);
 
 		if (!isValidId.success) {
-			throw new BadRequestError("Erro na validação dos dados.");
+			const errors = isValidId.error.issues;
+
+			throw new BadRequestError("Erro na validação dos dados.", errors);
 		}
 
 		const task = await this.taskService.findOne(isValidId.data, userId);

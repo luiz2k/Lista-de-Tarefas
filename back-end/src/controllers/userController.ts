@@ -43,7 +43,9 @@ export class UserController {
 		const isValidData = updateUserSchema.safeParse(req.body);
 
 		if (!isValidData.success) {
-			throw new BadRequestError("Erro na validação dos dados.");
+			const errors = isValidData.error.issues;
+
+			throw new BadRequestError("Erro na validação dos dados.", errors);
 		}
 
 		await this.userService.update(userId, isValidData.data);

@@ -6,6 +6,7 @@ export type TaskInput = {
 };
 
 export type TaskOutput = {
+	_id: Types.ObjectId;
 	userId: Types.ObjectId;
 	task: string;
 	completed: boolean;

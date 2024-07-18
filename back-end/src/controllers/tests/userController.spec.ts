@@ -6,11 +6,6 @@ import { UserController } from "../userController";
 import type { Request, Response } from "express";
 import type { IUserService } from "../../services/interfaces/IUserService";
 
-const res: Partial<Response> = {
-	status: vi.fn().mockReturnThis(),
-	json: vi.fn(),
-};
-
 describe("userController", () => {
 	let userRepository: UserRepository;
 	let userService: IUserService;
@@ -33,6 +28,11 @@ describe("userController", () => {
 				},
 			};
 
+			const res: Partial<Response> = {
+				status: vi.fn().mockReturnThis(),
+				json: vi.fn(),
+			};
+
 			await userController.create(req as Request, res as Response);
 
 			expect(res.status).toHaveBeenCalledWith(201);
@@ -45,7 +45,7 @@ describe("userController", () => {
 			});
 		});
 
-		it("Deve ocorrer um erro de validação", async () => {
+		it("Deve ocorrer um erro validação dos dados do body", async () => {
 			const req: Partial<Request> = {
 				body: {
 					username: "Example",
@@ -53,6 +53,11 @@ describe("userController", () => {
 					password: "123456",
 					confirmPassword: "12345678",
 				},
+			};
+
+			const res: Partial<Response> = {
+				status: vi.fn().mockReturnThis(),
+				json: vi.fn(),
 			};
 
 			await expect(

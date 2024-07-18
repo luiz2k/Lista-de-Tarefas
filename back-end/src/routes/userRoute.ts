@@ -1,8 +1,7 @@
 import { Router } from "express";
+import { UserController } from "../controllers/userController";
 import { UserRepository } from "../repositories/userRepository";
 import { UserService } from "../services/userService";
-import { UserController } from "../controllers/userController";
-import { authMiddleware } from "../middlewares/authMiddleware";
 
 class UserRoutes {
 	private router: Router;
@@ -21,15 +20,6 @@ class UserRoutes {
 
 	private routes() {
 		this.router.post("/", this.userController.create.bind(this.userController));
-
-		this.router.use(authMiddleware.handle.bind(authMiddleware));
-
-		this.router.get("/", this.userController.findOne.bind(this.userController));
-
-		this.router.patch(
-			"/",
-			this.userController.update.bind(this.userController),
-		);
 	}
 
 	public getRoutes() {

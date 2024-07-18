@@ -31,8 +31,6 @@ export class UserService implements IUserService {
 			throw new NotFoundError("Usuário não encontrado.");
 		}
 
-		// const { username, email, password } = user;
-
 		return {
 			username: user.username,
 			email: user.email,

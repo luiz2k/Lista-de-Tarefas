@@ -1,4 +1,4 @@
-import { ConflictError, NotFoundError } from "../helpers/errorHandler";
+import { ConflictError } from "../helpers/errorHandler";
 
 import type { IUserRepository } from "../repositories/interfaces/IUserRepository";
 import type { UserInput } from "../types/user";
@@ -20,30 +20,5 @@ export class UserService implements IUserService {
 			username: user.username,
 			email: user.email,
 		};
-	}
-
-	async findOne(id: string): Promise<UserOutput> {
-		const user = await this.UserRepository.findById(id);
-
-		if (!user) {
-			throw new NotFoundError("Usuário não encontrado.");
-		}
-
-		// const { username, email, password } = user;
-
-		return {
-			username: user.username,
-			email: user.email,
-		};
-	}
-
-	async update(id: string, data: Partial<UserInput>): Promise<void> {
-		const user = await this.UserRepository.findById(id);
-
-		if (!user) {
-			throw new NotFoundError("Usuário não encontrado.");
-		}
-
-		await this.UserRepository.update(id, data);
 	}
 }

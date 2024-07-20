@@ -1,5 +1,7 @@
 import cors from "cors";
 import express from "express";
+import swaggerUi from "swagger-ui-express";
+import { swaggerDocument } from "./docs/swaggerDocument";
 import { errorMiddleware } from "./middlewares/errorMiddleware";
 
 import type { Express, Router } from "express";
@@ -22,6 +24,10 @@ export class App {
 
 	public errorHandler(): void {
 		this.app.use(errorMiddleware.handle);
+	}
+
+	public swaggerDocumentation(path: string): void {
+		this.app.use(path, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 	}
 
 	public start(port: number): void {

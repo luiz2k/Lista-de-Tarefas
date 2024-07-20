@@ -155,44 +155,6 @@ export const schemas = {
 			},
 		},
 	},
-	updateTask: {
-		type: "object",
-		properties: {
-			task: {
-				type: "string",
-				description: "Nome da tarefa.",
-			},
-			completed: {
-				type: "boolean",
-				description: "Status da tarefa.",
-			},
-		},
-	},
-	updatedTask: {
-		type: "object",
-		properties: {
-			message: {
-				type: "string",
-				description: "Mensagem do retorno",
-			},
-			data: {
-				type: "array",
-				items: {
-					type: "object",
-					properties: {
-						task: {
-							type: "string",
-							description: "Nome da tarefa.",
-						},
-						completed: {
-							type: "boolean",
-							description: "Status da tarefa.",
-						},
-					},
-				},
-			},
-		},
-	},
 	taskDeleted: {
 		type: "object",
 		properties: {

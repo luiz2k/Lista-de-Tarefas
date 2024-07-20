@@ -17,8 +17,8 @@ export const swaggerDocument = {
 	},
 
 	paths: {
+		...auth,
 		...user,
 		...task,
-		...auth,
 	},
 };

@@ -1,4 +1,6 @@
 import { redirect } from "next/navigation";
+import { createQueryString } from "../../utils/createQueryString";
+
 import type {
 	HttpRequest,
 	HttpResponse,
@@ -23,7 +25,9 @@ export class HttpClientAdapter implements IHttpClientAdapter {
 		const data = await response.json();
 
 		if (data.statusCode === 401 && data.message === "Token inválido.") {
-			redirect("/entrar");
+			const query = createQueryString("status", "expired");
+
+			redirect(`/entrar?${query}`);
 		}
 
 		return data;

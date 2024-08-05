@@ -4,7 +4,7 @@ import { getSession } from "@/modules/shared/helpers/getSession";
 import { API } from "@/modules/shared/utils/apiConnection";
 import { revalidatePath, revalidateTag } from "next/cache";
 
-import type { HttpResponse } from "@/modules/shared/services/httpClientAdapter/interfaces/IHttpClientAdapter";
+import type { HttpResponse } from "@/modules/shared/services/HttpClientAdapter/interfaces/IHttpClientAdapter";
 import type { CreateTask, Task, UpdateTask } from "./types";
 
 export const getAllTasks = async (): Promise<HttpResponse<Task[]>> => {

@@ -8,12 +8,12 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { use } from "react";
+import { useContext } from "react";
 import { HomeContext } from "../../context";
 import { TableData } from "./components/TableData";
 
 export function TaskTable() {
-	const { tasksFound } = use(HomeContext);
+	const { tasksFound } = useContext(HomeContext);
 
 	return (
 		<div className="border rounded-md bg-background">

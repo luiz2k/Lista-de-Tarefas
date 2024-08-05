@@ -14,7 +14,6 @@ A aplicação foi desenvolvida utilizando **Next.JS** e **Tailwind CSS**. O flux
 - [Tailwind CSS](https://tailwindcss.com/)
 - [React Hook Form](https://react-hook-form.com/)
 - [Zod](https://zod.dev/)
-- [Vitest](https://vitest.dev/)
 - [Shadcn/ui](https://ui.shadcn.com/)
 
 

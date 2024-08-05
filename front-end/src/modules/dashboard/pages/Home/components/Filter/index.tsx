@@ -3,17 +3,21 @@
 import { Button } from "@/components/ui/button";
 import { createQueryString } from "@/modules/shared/utils/createQueryString";
 import { usePathname, useRouter } from "next/navigation";
-import { use } from "react";
+import { useContext } from "react";
 import { HomeContext } from "../../context";
 
 export function Filter() {
-	const { tasks, searchParam: search } = use(HomeContext);
+	const { tasks, searchParam } = useContext(HomeContext);
 
 	const router = useRouter();
 	const pathname = usePathname();
 
 	const filter =
-		search === "completed" ? true : search === "pending" ? false : "all";
+		searchParam === "completed"
+			? true
+			: searchParam === "pending"
+				? false
+				: "all";
 
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -21,7 +21,7 @@ export function HomeContextProvider({
 	const searchDebounce = useDebounce<string>(search);
 
 	const searchParams = useSearchParams();
-	const searchParam = searchParams.get("filter");
+	const searchParam = searchParams?.get("filter");
 
 	const filter =
 		searchParam === "completed"

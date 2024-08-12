@@ -24,6 +24,7 @@ export class JwtService implements IJwtService {
 		const TIMESTAMP_IN_SECONDS = Math.floor(TIMESTAMP_IN_MILLISECONDS / 1000);
 
 		const EXPIRES_IN_ONE_HOUR = TIMESTAMP_IN_SECONDS + 60 * 60;
+		const EXPIRES_IN_ONE_HOUR_IN_MILLISECONDS = EXPIRES_IN_ONE_HOUR * 1000;
 		const EXPIRES_IN_SEVEN_DAYS = TIMESTAMP_IN_SECONDS + 60 * 60 * 24 * 7;
 
 		const accessTokenPayload: Payload = {
@@ -54,7 +55,7 @@ export class JwtService implements IJwtService {
 		return {
 			access: {
 				token: accessToken,
-				expiresIn: TIMESTAMP_IN_MILLISECONDS,
+				expiresIn: EXPIRES_IN_ONE_HOUR_IN_MILLISECONDS,
 			},
 			refresh: {
 				token: refreshToken,

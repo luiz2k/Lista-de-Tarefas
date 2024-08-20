@@ -81,53 +81,6 @@ export const task = {
 				},
 			},
 		},
-		patch: {
-			tags: ["task"],
-			security: [{ bearerAuth: [] }],
-			summary: "Atualizar uma tarefa.",
-			requestBody: {
-				required: false,
-				content: {
-					"application/json": {
-						schema: {
-							$ref: "#/components/schemas/updateTask",
-						},
-					},
-				},
-			},
-			responses: {
-				200: {
-					description: "Tarefa atualizada com sucesso.",
-					content: {
-						"application/json": {
-							schema: {
-								$ref: "#/components/schemas/updatedTask",
-							},
-						},
-					},
-				},
-				400: {
-					description: "Erro na validação dos dados.",
-					content: {
-						"application/json": {
-							schema: {
-								$ref: "#/components/schemas/validationError",
-							},
-						},
-					},
-				},
-				401: {
-					description: "Token inválido.",
-					content: {
-						"application/json": {
-							schema: {
-								$ref: "#/components/schemas/error",
-							},
-						},
-					},
-				},
-			},
-		},
 	},
 	"/task/{id}": {
 		get: {
@@ -169,6 +122,69 @@ export const task = {
 						"application/json": {
 							schema: {
 								$ref: "#/components/schemas/error",
+							},
+						},
+					},
+				},
+				401: {
+					description: "Token inválido.",
+					content: {
+						"application/json": {
+							schema: {
+								$ref: "#/components/schemas/error",
+							},
+						},
+					},
+				},
+			},
+		},
+		patch: {
+			tags: ["task"],
+			security: [{ bearerAuth: [] }],
+			summary: "Atualizar uma tarefa.",
+			parameters: [
+				{
+					name: "id",
+					in: "path",
+					required: true,
+					description: "ID da tarefa.",
+				},
+			],
+			requestBody: {
+				required: false,
+				content: {
+					"application/json": {
+						schema: {
+							$ref: "#/components/schemas/updateTask",
+						},
+						examples: {
+							task: {
+								value: {
+									task: "Fazer compras",
+									completed: true,
+								},
+							},
+						},
+					},
+				},
+			},
+			responses: {
+				200: {
+					description: "Tarefa atualizada com sucesso.",
+					content: {
+						"application/json": {
+							schema: {
+								$ref: "#/components/schemas/updatedTask",
+							},
+						},
+					},
+				},
+				400: {
+					description: "Erro na validação dos dados.",
+					content: {
+						"application/json": {
+							schema: {
+								$ref: "#/components/schemas/validationError",
 							},
 						},
 					},

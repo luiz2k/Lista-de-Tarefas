@@ -1,16 +1,16 @@
-import type { Types } from "mongoose";
-
 export type TaskInput = {
 	userId: string;
 	task: string;
 };
 
 export type TaskOutput = {
-	_id: Types.ObjectId;
-	userId: Types.ObjectId;
+	id: string;
 	task: string;
 	completed: boolean;
 	createdAt: Date;
+	user: {
+		id: string;
+	};
 };
 
 export type UpdateTaskInput = {

@@ -1,10 +1,10 @@
+import { randomUUID } from "node:crypto";
 import { vi } from "vitest";
 import { TaskRepository } from "../../tests/__mocks__/taskRepository";
 import { TaskService } from "../../tests/__mocks__/taskService";
 import { TaskController } from "../taskController";
 
 import type { Request, Response } from "express";
-import { Types } from "mongoose";
 import type { ITaskRepository } from "../../repositories/interfaces/ITaskRepository";
 import type { ITaskService } from "../../services/interfaces/ITaskService";
 
@@ -21,7 +21,7 @@ describe("taskController", () => {
 
 	describe("create", () => {
 		it("Deve criar uma tarefa", async () => {
-			const userId = new Types.ObjectId().toString();
+			const userId = randomUUID();
 
 			const req: Partial<Request> = {
 				user: {
@@ -48,18 +48,20 @@ describe("taskController", () => {
 				expect.objectContaining({
 					message: "Tarefa criada com sucesso.",
 					data: expect.objectContaining({
-						_id: expect.any(Types.ObjectId),
+						id: expect.any(String),
 						completed: false,
 						createdAt: expect.any(Date),
 						task: req.body.task,
-						userId: expect.any(Types.ObjectId),
+						user: expect.objectContaining({
+							id: userId,
+						}),
 					}),
 				}),
 			);
 		});
 
 		it("Deve ocorrer um erro na válidação dos dados", async () => {
-			const userId = new Types.ObjectId().toString();
+			const userId = randomUUID();
 
 			const req: Partial<Request> = {
 				user: {
@@ -85,13 +87,13 @@ describe("taskController", () => {
 
 	describe("findOne", () => {
 		it("Deve encontrar uma tarefa", async () => {
-			const userId = new Types.ObjectId().toString();
-			const taskId = new Types.ObjectId();
+			const userId = randomUUID();
+			const taskId = randomUUID();
 
 			vi.spyOn(taskService, "findOne").mockReturnValueOnce(
 				Promise.resolve({
-					_id: taskId,
-					userId: new Types.ObjectId(userId),
+					id: taskId,
+					userId: userId,
 					task: "Tarefa 1",
 					completed: false,
 					createdAt: new Date(),
@@ -100,7 +102,7 @@ describe("taskController", () => {
 
 			const req: Partial<Request> = {
 				params: {
-					id: taskId.toString(),
+					id: taskId,
 				},
 				user: {
 					id: userId,
@@ -122,17 +124,17 @@ describe("taskController", () => {
 			expect(res.json).toHaveBeenCalledWith({
 				message: "Tarefa encontrada.",
 				data: {
-					_id: taskId,
+					id: taskId,
 					completed: false,
 					createdAt: expect.any(Date),
 					task: "Tarefa 1",
-					userId: new Types.ObjectId(userId),
+					userId: userId,
 				},
 			});
 		});
 
 		it("Deve ocorrer um erro na válidação do ID do parametro", async () => {
-			const userId = new Types.ObjectId().toString();
+			const userId = randomUUID();
 
 			const req: Partial<Request> = {
 				params: {
@@ -158,7 +160,7 @@ describe("taskController", () => {
 
 	describe("findAll", () => {
 		it("Deve encontrar todas as tarefas", async () => {
-			const userId = new Types.ObjectId().toString();
+			const userId = randomUUID();
 
 			const req: Partial<Request> = {
 				user: {
@@ -197,11 +199,13 @@ describe("taskController", () => {
 				message: "Tarefas encontradas.",
 				data: expect.arrayContaining([
 					{
-						_id: expect.any(Types.ObjectId),
+						id: expect.any(String),
 						completed: expect.any(Boolean),
 						createdAt: expect.any(Date),
 						task: req.body.task,
-						userId: new Types.ObjectId(userId),
+						user: expect.objectContaining({
+							id: userId,
+						}),
 					},
 				]),
 			});
@@ -210,14 +214,14 @@ describe("taskController", () => {
 
 	describe("update", () => {
 		it("Deve atualizar uma tarefa", async () => {
-			const userId = new Types.ObjectId().toString();
-			const taskId = new Types.ObjectId();
+			const userId = randomUUID();
+			const taskId = randomUUID();
 
 			vi.spyOn(taskService, "update").mockReturnValueOnce(Promise.resolve());
 
 			const req: Partial<Request> = {
 				params: {
-					id: taskId.toString(),
+					id: taskId,
 				},
 				user: {
 					id: userId,
@@ -247,7 +251,7 @@ describe("taskController", () => {
 		});
 
 		it("Deve ocorrer um erro na validação dos dados do body", async () => {
-			const userId = new Types.ObjectId().toString();
+			const userId = randomUUID();
 
 			vi.spyOn(taskService, "update").mockReturnValueOnce(Promise.resolve());
 
@@ -277,14 +281,14 @@ describe("taskController", () => {
 		});
 
 		it("Deve ocorrer um erro na validação dos dados do parametro id", async () => {
-			const userId = new Types.ObjectId().toString();
-			const taskId = new Types.ObjectId();
+			const userId = randomUUID();
+			const taskId = randomUUID();
 
 			vi.spyOn(taskService, "update").mockReturnValueOnce(Promise.resolve());
 
 			const req: Partial<Request> = {
 				params: {
-					id: taskId.toString(),
+					id: taskId,
 				},
 				user: {
 					id: userId,
@@ -307,14 +311,14 @@ describe("taskController", () => {
 
 	describe("remove", () => {
 		it("Deve remover uma tarefa", async () => {
-			const userId = new Types.ObjectId().toString();
-			const taskId = new Types.ObjectId();
+			const userId = randomUUID();
+			const taskId = randomUUID();
 
 			vi.spyOn(taskService, "remove").mockReturnValueOnce(Promise.resolve());
 
 			const req: Partial<Request> = {
 				params: {
-					id: taskId.toString(),
+					id: taskId,
 				},
 				user: {
 					id: userId,
@@ -339,7 +343,7 @@ describe("taskController", () => {
 		});
 
 		it("Deve ocorrer um erro na validação dos dados do parametro id", async () => {
-			const userId = new Types.ObjectId().toString();
+			const userId = randomUUID();
 
 			vi.spyOn(taskService, "remove").mockReturnValueOnce(Promise.resolve());
 

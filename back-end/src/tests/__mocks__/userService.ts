@@ -37,7 +37,7 @@ export class UserService implements IUserService {
 		};
 	}
 
-	async update(_id: string, _user: Partial<UserInput>): Promise<void> {
+	async update(id: string, _user: Partial<UserInput>): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
 }

@@ -2,7 +2,10 @@ import bcrypt from "bcrypt";
 import { BadRequestError, UnauthorizedError } from "../../helpers/errorHandler";
 
 import type { IUserRepository } from "../../repositories/interfaces/IUserRepository";
-import type { IAuthService, LoginInput } from "../../services/interfaces/IAuthService";
+import type {
+	IAuthService,
+	LoginInput,
+} from "../../services/interfaces/IAuthService";
 import type { IJwtService } from "../../services/interfaces/IJwtService";
 import type { GenerateTokenOutput } from "../../types/jwt";
 
@@ -25,7 +28,7 @@ export class AuthService implements IAuthService {
 			throw new UnauthorizedError("E-mail ou senha inválidos");
 		}
 
-		const userId = String(user._id);
+		const userId = String(user.id);
 
 		const token = await this.jwtService.generateTokens(userId);
 

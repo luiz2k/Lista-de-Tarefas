@@ -81,7 +81,7 @@ export class JwtService implements IJwtService {
 		});
 
 		await this.jwtRepository.createRevokedToken({
-			userId: String(refreshToken.userId),
+			userId: refreshToken.user.id,
 			token: refreshToken.token,
 			revokedAt: new Date(),
 		});

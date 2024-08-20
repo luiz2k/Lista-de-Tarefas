@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { randomUUID } from "node:crypto";
 import { TaskRepository } from "../../tests/__mocks__/taskRepository";
 import { TaskService } from "../taskService";
 
@@ -16,7 +16,7 @@ describe("TaskService", () => {
 	describe("create", () => {
 		it("Deve criar uma task", async () => {
 			const data = {
-				userId: String(new Types.ObjectId()),
+				userId: randomUUID(),
 				task: "Tarefa 1",
 			};
 
@@ -24,30 +24,18 @@ describe("TaskService", () => {
 
 			expect(task).toMatchObject(taskRepository.tasks[0]);
 		});
-
-		it("Deve ocorrer um erro se o ID do usuário for inválido", async () => {
-			const data = {
-				userId: "1",
-				task: "Tarefa 1",
-			};
-
-			await expect(taskService.create(data)).rejects.toThrow();
-		});
 	});
 
 	describe("findOne", () => {
 		it("Deve encontrar uma task", async () => {
 			const data = {
-				userId: String(new Types.ObjectId()),
+				userId: randomUUID(),
 				task: "Tarefa 1",
 			};
 
 			const newTask = await taskService.create(data);
 
-			const task = await taskService.findOne(
-				newTask._id.toString(),
-				data.userId,
-			);
+			const task = await taskService.findOne(newTask.id, data.userId);
 
 			expect(task).toEqual(newTask);
 			expect(task).toMatchObject(taskRepository.tasks[0]);
@@ -63,7 +51,7 @@ describe("TaskService", () => {
 
 	describe("findAll", () => {
 		it("Deve encontrar todas as tasks", async () => {
-			const userId = String(new Types.ObjectId());
+			const userId = randomUUID();
 
 			const task1 = {
 				userId: userId,
@@ -95,7 +83,7 @@ describe("TaskService", () => {
 
 	describe("update", () => {
 		it("Deve atualizar uma task", async () => {
-			const userId = String(new Types.ObjectId());
+			const userId = randomUUID();
 
 			const data = {
 				userId: userId,
@@ -109,7 +97,7 @@ describe("TaskService", () => {
 				completed: true,
 			};
 
-			await taskService.update(newTask._id.toString(), userId, updateTask);
+			await taskService.update(newTask.id.toString(), userId, updateTask);
 
 			const tasks = await taskService.findAll(userId);
 
@@ -131,7 +119,7 @@ describe("TaskService", () => {
 
 	describe("remove", () => {
 		it("Deve remover uma task", async () => {
-			const userId = String(new Types.ObjectId());
+			const userId = randomUUID();
 
 			const data = {
 				userId: userId,
@@ -142,7 +130,7 @@ describe("TaskService", () => {
 
 			expect(taskRepository.tasks).toHaveLength(1);
 
-			await taskService.remove(String(newTask._id), String(newTask.userId));
+			await taskService.remove(newTask.id, newTask.user.id);
 
 			expect(taskRepository.tasks).toHaveLength(0);
 		});

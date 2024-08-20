@@ -1,5 +1,5 @@
+import { randomUUID } from "node:crypto";
 import bcrypt from "bcrypt";
-import { Types } from "mongoose";
 
 import type {
 	IUserRepository,
@@ -10,7 +10,7 @@ import type { UserInput } from "../../types/user";
 export class UserRepository implements IUserRepository {
 	users: UserOutput[] = [
 		{
-			_id: new Types.ObjectId(),
+			id: randomUUID(),
 			username: "Example",
 			email: "example@ex.com",
 			password: bcrypt.hashSync("123456", 10),
@@ -19,7 +19,7 @@ export class UserRepository implements IUserRepository {
 
 	async create(data: UserInput): Promise<UserOutput> {
 		const newUser = {
-			_id: new Types.ObjectId(),
+			id: randomUUID(),
 			username: "Example",
 			email: data.email,
 			password: bcrypt.hashSync(data.password, 10),

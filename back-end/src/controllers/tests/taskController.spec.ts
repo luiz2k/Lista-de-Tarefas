@@ -93,10 +93,12 @@ describe("taskController", () => {
 			vi.spyOn(taskService, "findOne").mockReturnValueOnce(
 				Promise.resolve({
 					id: taskId,
-					userId: userId,
 					task: "Tarefa 1",
 					completed: false,
 					createdAt: new Date(),
+					user: {
+						id: userId,
+					},
 				}),
 			);
 
@@ -128,7 +130,9 @@ describe("taskController", () => {
 					completed: false,
 					createdAt: expect.any(Date),
 					task: "Tarefa 1",
-					userId: userId,
+					user: {
+						id: userId,
+					},
 				},
 			});
 		});

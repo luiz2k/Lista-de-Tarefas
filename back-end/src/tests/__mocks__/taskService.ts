@@ -20,7 +20,7 @@ export class TaskService implements ITaskService {
 			throw new NotFoundError("Tarefa não encontrada.");
 		}
 
-		if (String(task?.userId) !== userId) {
+		if (task.user.id !== userId) {
 			throw new NotFoundError("Tarefa não encontrada.");
 		}
 
@@ -44,7 +44,7 @@ export class TaskService implements ITaskService {
 			throw new NotFoundError("Tarefa não encontrada.");
 		}
 
-		if (String(task?.userId) !== userId) {
+		if (task.user.id !== userId) {
 			throw new NotFoundError("Tarefa não encontrada.");
 		}
 
@@ -58,7 +58,7 @@ export class TaskService implements ITaskService {
 			throw new NotFoundError("Tarefa não encontrada.");
 		}
 
-		if (String(task?.userId) !== userId) {
+		if (task.user.id !== userId) {
 			throw new NotFoundError("Tarefa não encontrada.");
 		}
 

@@ -11,6 +11,7 @@
 		"dev": "tsx --env-file .env --watch src/server.ts",
 		"test": "vitest",
 		"typeorm": "typeorm-ts-node-commonjs",
+		"docker:postgres": "docker compose up postgres",
 		"migration:generate": "typeorm-ts-node-commonjs migration:generate -d ./src/database/data-source ./src/database/migrations/migration",
 		"migration:run": "npm run typeorm migration:run -- -d ./src/database/data-source",
 		"migration:revert": "npm run typeorm migration:revert -- -d ./src/database/data-source"

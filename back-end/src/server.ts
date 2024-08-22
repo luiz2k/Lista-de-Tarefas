@@ -1,3 +1,4 @@
+import "dotenv/config";
 import "express-async-errors";
 import { App } from "./app";
 import { AppDataSource } from "./database/data-source";

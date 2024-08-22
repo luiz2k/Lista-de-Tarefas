@@ -25,7 +25,7 @@ export class AuthService implements IAuthService {
 			throw new UnauthorizedError("E-mail ou senha inválidos");
 		}
 
-		const userId = String(user._id);
+		const userId = String(user.id);
 
 		const token = await this.jwtService.generateTokens(userId);
 

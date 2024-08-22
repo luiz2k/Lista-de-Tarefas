@@ -1,8 +1,7 @@
-import type { Types } from "mongoose";
 import type { UserInput } from "../../types/user";
 
 export type UserOutput = {
-	_id: Types.ObjectId;
+	id: string;
 	username: string;
 	email: string;
 	password: string;

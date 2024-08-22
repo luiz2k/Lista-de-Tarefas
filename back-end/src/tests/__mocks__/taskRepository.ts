@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { randomUUID } from "node:crypto";
 
 import type { ITaskRepository } from "../../repositories/interfaces/ITaskRepository";
 import type { TaskInput, TaskOutput, UpdateTaskInput } from "../../types/task";
@@ -8,11 +8,13 @@ export class TaskRepository implements ITaskRepository {
 
 	async create(data: TaskInput): Promise<TaskOutput> {
 		const task = {
-			_id: new Types.ObjectId(),
-			userId: new Types.ObjectId(data.userId),
+			id: randomUUID(),
 			task: data.task,
 			completed: false,
 			createdAt: new Date(),
+			user: {
+				id: data.userId,
+			},
 		};
 
 		this.tasks.push(task);
@@ -21,22 +23,20 @@ export class TaskRepository implements ITaskRepository {
 	}
 
 	async findOne(id: string): Promise<TaskOutput | null> {
-		const task = this.tasks.find((task) => String(task._id) === id);
+		const task = this.tasks.find((task) => task.id === id);
 
 		return task || null;
 	}
 
 	async findAll(userId: string): Promise<TaskOutput[]> {
-		const tasks = this.tasks.filter((task) => String(task.userId) === userId);
+		const tasks = this.tasks.filter((task) => task.user.id === userId);
 
 		return tasks;
 	}
 
 	async update(id: string, data: UpdateTaskInput): Promise<void> {
-		const objectId = new Types.ObjectId(id);
-
 		const updatedTask = this.tasks.map((task) => {
-			if (String(task._id) === String(objectId)) {
+			if (task.id === id) {
 				return {
 					...task,
 					...data,
@@ -50,11 +50,7 @@ export class TaskRepository implements ITaskRepository {
 	}
 
 	async remove(id: string): Promise<void> {
-		const objectId = new Types.ObjectId(id);
-
-		const taskIndice = this.tasks.findIndex(
-			(elemento) => elemento._id === objectId,
-		);
+		const taskIndice = this.tasks.findIndex((elemento) => elemento.id === id);
 
 		this.tasks.splice(taskIndice, 1);
 	}

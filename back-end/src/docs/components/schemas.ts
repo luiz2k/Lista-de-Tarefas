@@ -98,6 +98,19 @@ export const schemas = {
 		},
 		required: ["task"],
 	},
+	updateTask: {
+		type: "object",
+		properties: {
+			task: {
+				type: "string",
+				description: "Nome da tarefa.",
+			},
+			completed: {
+				type: "boolean",
+				description: false,
+			},
+		},
+	},
 	task: {
 		type: "object",
 		properties: {
@@ -110,6 +123,10 @@ export const schemas = {
 				items: {
 					type: "object",
 					properties: {
+						id: {
+							type: "string",
+							description: "ID da tarefa.",
+						},
 						task: {
 							type: "string",
 							description: "Nome da tarefa.",
@@ -128,12 +145,12 @@ export const schemas = {
 			},
 		},
 	},
-	createdTask: {
+	updatedTask: {
 		type: "object",
 		properties: {
 			message: {
 				type: "string",
-				description: "Mensagem da resposta.",
+				description: "Tarefa atualizada com sucesso.",
 			},
 			data: {
 				type: "object",
@@ -146,10 +163,45 @@ export const schemas = {
 						type: "boolean",
 						description: "Status da tarefa.",
 					},
+				},
+			},
+		},
+	},
+	createdTask: {
+		type: "object",
+		properties: {
+			message: {
+				type: "string",
+				description: "Mensagem da resposta.",
+			},
+			data: {
+				type: "object",
+				properties: {
+					id: {
+						type: "string",
+						description: "ID da tarefa.",
+					},
+					task: {
+						type: "string",
+						description: "Nome da tarefa.",
+					},
+					completed: {
+						type: "boolean",
+						description: "Status da tarefa.",
+					},
 					createdAt: {
 						type: "string",
 						format: "date",
 						description: "Data de criação da tarefa.",
+					},
+					user: {
+						type: "object",
+						properties: {
+							id: {
+								type: "string",
+								description: "ID do usuário.",
+							},
+						},
 					},
 				},
 			},

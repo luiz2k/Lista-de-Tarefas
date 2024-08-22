@@ -1,5 +1,4 @@
 import { BadRequestError } from "../helpers/errorHandler";
-import { objectIdSchema } from "../validations/mongodbValidation";
 import {
 	createTaskSchema,
 	updateTaskSchema,
@@ -7,6 +6,7 @@ import {
 
 import type { Request, Response } from "express";
 import type { ITaskService } from "../services/interfaces/ITaskService";
+import { uuidSchema } from "../validations/uuidValidation";
 
 export class TaskController {
 	constructor(private readonly taskService: ITaskService) {}
@@ -33,7 +33,7 @@ export class TaskController {
 	async findOne(req: Request, res: Response): Promise<Response> {
 		const userId = req.user?.id as string;
 
-		const isValidId = objectIdSchema.safeParse(req.params.id);
+		const isValidId = uuidSchema.safeParse(req.params.id);
 
 		if (!isValidId.success) {
 			const errors = isValidId.error.issues;
@@ -63,7 +63,7 @@ export class TaskController {
 	async update(req: Request, res: Response): Promise<Response> {
 		const userId = req.user?.id as string;
 
-		const isValidId = objectIdSchema.safeParse(req.params.id);
+		const isValidId = uuidSchema.safeParse(req.params.id);
 
 		if (!isValidId.success) {
 			throw new BadRequestError("Erro na validação dos dados.");
@@ -86,7 +86,7 @@ export class TaskController {
 	async remove(req: Request, res: Response): Promise<Response> {
 		const userId = req.user?.id as string;
 
-		const isValidId = objectIdSchema.safeParse(req.params.id);
+		const isValidId = uuidSchema.safeParse(req.params.id);
 
 		if (!isValidId.success) {
 			throw new BadRequestError("Erro na validação dos dados.");

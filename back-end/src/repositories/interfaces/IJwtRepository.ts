@@ -1,5 +1,3 @@
-import type { Types } from "mongoose";
-
 export type CreateRefreshTokenInput = {
 	userId: string;
 	token: string;
@@ -8,10 +6,12 @@ export type CreateRefreshTokenInput = {
 };
 
 export type CreateRefreshTokenOutput = {
-	userId: Types.ObjectId;
 	token: string;
 	createdAt: Date;
 	expiresAt: Date;
+	user: {
+		id: string;
+	};
 };
 
 export type CreateRevokedTokenInput = {

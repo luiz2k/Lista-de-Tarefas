@@ -1,4 +1,5 @@
-import { RefreshToken, RevokedToken } from "../models/jwtModel";
+import { AppDataSource } from "../database/data-source";
+import { RefreshToken, RevokedToken } from "../database/entities/jwtEntity";
 
 import type {
 	CreateRefreshTokenInput,
@@ -8,25 +9,60 @@ import type {
 } from "./interfaces/IJwtRepository";
 
 export class JwtRepository implements IJwtRepository {
+	refreshRepository = AppDataSource.getRepository(RefreshToken);
+	revokedRepository = AppDataSource.getRepository(RevokedToken);
+
 	public async createRefreshToken(
 		data: CreateRefreshTokenInput,
 	): Promise<void> {
-		await RefreshToken.create(data);
+		const { userId, ...rest } = data;
+
+		const refreshToken = this.refreshRepository.create({
+			user: { id: userId },
+			...rest,
+		});
+
+		await this.refreshRepository.save(refreshToken);
 	}
 
 	public async findRefreshToken(
 		data: RefreshTokenInput,
 	): Promise<CreateRefreshTokenOutput | null> {
-		const refreshToken = await RefreshToken.findOne(data);
+		const { userId, ...rest } = data;
+
+		const refreshToken = await this.refreshRepository.findOne({
+			where: {
+				user: { id: userId },
+				...rest,
+			},
+			relations: ["user"],
+			select: {
+				user: {
+					id: true,
+				},
+			},
+		});
 
 		return refreshToken;
 	}
 
 	public async removeRefreshToken(data: RefreshTokenInput): Promise<void> {
-		await RefreshToken.findOneAndDelete(data);
+		const { userId, ...rest } = data;
+
+		await this.refreshRepository.delete({
+			user: { id: userId },
+			...rest,
+		});
 	}
 
 	public async createRevokedToken(data: RefreshTokenInput): Promise<void> {
-		await RevokedToken.create(data);
+		const { userId, ...rest } = data;
+
+		const revokedToken = this.revokedRepository.create({
+			user: { id: userId },
+			...rest,
+		});
+
+		await this.revokedRepository.save(revokedToken);
 	}
 }

@@ -12,6 +12,9 @@ export const AppDataSource = new DataSource({
 	database: env.DB_DATABASE,
 	synchronize: false,
 	logging: false,
+	ssl: {
+		rejectUnauthorized: false,
+	},
 	entities: ["./src/database/entities/*{.ts,.js}"],
 	migrations: ["./src/database/migrations/*{.ts,.js}"],
 });

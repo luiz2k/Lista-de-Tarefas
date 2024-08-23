@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { UserController } from "../controllers/userController";
-import { UserRepository } from "../repositories/userRepository";
-import { UserService } from "../services/userService";
+import { UserController } from "../controllers/userController.js";
+import { UserRepository } from "../repositories/userRepository.js";
+import { UserService } from "../services/userService.js";
 
 class UserRoutes {
 	private router: Router;

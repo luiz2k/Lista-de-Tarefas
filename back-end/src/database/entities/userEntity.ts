@@ -7,8 +7,8 @@ import {
 	OneToMany,
 	PrimaryGeneratedColumn,
 } from "typeorm";
-import { RefreshToken, RevokedToken } from "./jwtEntity";
-import { Task } from "./taskEntity";
+import { RefreshToken, RevokedToken } from "./jwtEntity.js";
+import { Task } from "./taskEntity.js";
 
 @Entity({ name: "users" })
 export class User {

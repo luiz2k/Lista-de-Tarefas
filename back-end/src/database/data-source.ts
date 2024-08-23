@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { env } from "../validations/envValidation";
+import { env } from "../validations/envValidation.js";
 
 export const AppDataSource = new DataSource({
 	type: "postgres",

@@ -5,9 +5,10 @@
 	"engines": {
 		"node": "20.14.0"
 	},
+	"type": "module",
 	"scripts": {
-		"build": "npx tsc",
-		"start": "node dist/server.js",
+		"build": "rm -rf dist && npx tsc",
+		"start": "node --loader ts-node/esm dist/server.js",
 		"dev": "tsx --watch src/server.ts",
 		"test": "vitest",
 		"typeorm": "typeorm-ts-node-commonjs",
@@ -35,6 +36,11 @@
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
+		"@anatine/esbuild-decorators": "^0.2.19",
+		"@babel/cli": "^7.24.8",
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.4",
+		"@babel/preset-typescript": "^7.24.7",
 		"@biomejs/biome": "^1.8.3",
 		"@types/bcrypt": "^5.0.2",
 		"@types/cors": "^2.8.17",
@@ -44,6 +50,7 @@
 		"@types/node": "^20.14.10",
 		"@types/swagger-ui-express": "^4.1.6",
 		"ts-node": "^10.9.2",
+		"tsup": "^8.2.4",
 		"tsx": "^4.16.2",
 		"typescript": "^5.5.3",
 		"vitest": "^2.0.2"

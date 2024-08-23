@@ -1,8 +1,8 @@
-import { ConflictError } from "../helpers/errorHandler";
+import { ConflictError } from "../helpers/errorHandler.js";
 
-import type { IUserRepository } from "../repositories/interfaces/IUserRepository";
-import type { UserInput } from "../types/user";
-import type { IUserService, UserOutput } from "./interfaces/IUserService";
+import type { IUserRepository } from "../repositories/interfaces/IUserRepository.js";
+import type { UserInput } from "../types/user.js";
+import type { IUserService, UserOutput } from "./interfaces/IUserService.js";
 
 export class UserService implements IUserService {
 	constructor(private readonly UserRepository: IUserRepository) {}

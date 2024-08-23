@@ -1,8 +1,8 @@
-import { NotFoundError } from "../helpers/errorHandler";
+import { NotFoundError } from "../helpers/errorHandler.js";
 
-import type { ITaskRepository } from "../repositories/interfaces/ITaskRepository";
-import type { TaskInput, TaskOutput, UpdateTaskInput } from "../types/task";
-import type { ITaskService } from "./interfaces/ITaskService";
+import type { ITaskRepository } from "../repositories/interfaces/ITaskRepository.js";
+import type { TaskInput, TaskOutput, UpdateTaskInput } from "../types/task.js";
+import type { ITaskService } from "./interfaces/ITaskService.js";
 
 export class TaskService implements ITaskService {
 	constructor(private readonly taskRepository: ITaskRepository) {}

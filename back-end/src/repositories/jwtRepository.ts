@@ -1,12 +1,12 @@
-import { AppDataSource } from "../database/data-source";
-import { RefreshToken, RevokedToken } from "../database/entities/jwtEntity";
+import { AppDataSource } from "../database/data-source.js";
+import { RefreshToken, RevokedToken } from "../database/entities/jwtEntity.js";
 
 import type {
 	CreateRefreshTokenInput,
 	CreateRefreshTokenOutput,
 	IJwtRepository,
 	RefreshTokenInput,
-} from "./interfaces/IJwtRepository";
+} from "./interfaces/IJwtRepository.js";
 
 export class JwtRepository implements IJwtRepository {
 	refreshRepository = AppDataSource.getRepository(RefreshToken);

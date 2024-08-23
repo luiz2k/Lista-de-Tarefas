@@ -1,4 +1,4 @@
-import type { UserInput } from "../../types/user";
+import type { UserInput } from "../../types/user.js";
 
 export type UserOutput = {
 	id: string;

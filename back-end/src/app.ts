@@ -1,8 +1,8 @@
 import cors from "cors";
 import express from "express";
 import swaggerUi from "swagger-ui-express";
-import { swaggerDocument } from "./docs/swaggerDocument";
-import { errorMiddleware } from "./middlewares/errorMiddleware";
+import { swaggerDocument } from "./docs/swaggerDocument.js";
+import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 
 import type { Express, Router } from "express";
 

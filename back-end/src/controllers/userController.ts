@@ -1,8 +1,8 @@
-import { BadRequestError } from "../helpers/errorHandler";
-import { createUserSchema } from "../validations/userValidation";
+import { BadRequestError } from "../helpers/errorHandler.js";
+import { createUserSchema } from "../validations/userValidation.js";
 
 import type { Request, Response } from "express";
-import type { IUserService } from "../services/interfaces/IUserService";
+import type { IUserService } from "../services/interfaces/IUserService.js";
 
 export class UserController {
 	constructor(private readonly userService: IUserService) {}

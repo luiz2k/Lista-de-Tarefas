@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { TaskController } from "../controllers/taskController";
-import { authMiddleware } from "../middlewares/authMiddleware";
-import { TaskRepository } from "../repositories/taskRepository";
-import { TaskService } from "../services/taskService";
+import { TaskController } from "../controllers/taskController.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { TaskRepository } from "../repositories/taskRepository.js";
+import { TaskService } from "../services/taskService.js";
 
 class TaskRoutes {
 	private router: Router;

@@ -1,10 +1,10 @@
 import bcrypt from "bcrypt";
-import { BadRequestError, UnauthorizedError } from "../helpers/errorHandler";
+import { BadRequestError, UnauthorizedError } from "../helpers/errorHandler.js";
 
-import type { IUserRepository } from "../repositories/interfaces/IUserRepository";
-import type { GenerateTokenOutput } from "../types/jwt";
-import type { IAuthService, LoginInput } from "./interfaces/IAuthService";
-import type { IJwtService } from "./interfaces/IJwtService";
+import type { IUserRepository } from "../repositories/interfaces/IUserRepository.js";
+import type { GenerateTokenOutput } from "../types/jwt.js";
+import type { IAuthService, LoginInput } from "./interfaces/IAuthService.js";
+import type { IJwtService } from "./interfaces/IJwtService.js";
 
 export class AuthService implements IAuthService {
 	constructor(

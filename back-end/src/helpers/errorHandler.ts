@@ -1,7 +1,7 @@
-import { formatZodErrors } from "./formatZodErrors";
+import { formatZodErrors } from "./formatZodErrors.js";
 
 import type { ZodIssue } from "zod";
-import type { ZodErrors } from "../types/error";
+import type { ZodErrors } from "../types/error.js";
 
 export class GenericError extends Error {
 	public readonly zodErrors: ZodErrors[] | undefined;

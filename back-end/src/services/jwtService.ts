@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
-import { UnauthorizedError } from "../helpers/errorHandler";
-import { env } from "../validations/envValidation";
+import { UnauthorizedError } from "../helpers/errorHandler.js";
+import { env } from "../validations/envValidation.js";
 
-import type { IJwtRepository } from "../repositories/interfaces/IJwtRepository";
-import type { GenerateTokenOutput, Payload } from "../types/jwt";
-import type { IJwtService } from "./interfaces/IJwtService";
+import type { IJwtRepository } from "../repositories/interfaces/IJwtRepository.js";
+import type { GenerateTokenOutput, Payload } from "../types/jwt.js";
+import type { IJwtService } from "./interfaces/IJwtService.js";
 
 export class JwtService implements IJwtService {
 	constructor(private readonly jwtRepository: IJwtRepository) {}

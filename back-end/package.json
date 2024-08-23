@@ -6,7 +6,7 @@
 		"node": "20.14.0"
 	},
 	"scripts": {
-		"build": "npx tsc",
+		"build": "rm -rf dist && npx tsc",
 		"start": "node dist/server.js",
 		"dev": "tsx --watch src/server.ts",
 		"test": "vitest",

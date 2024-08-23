@@ -11,11 +11,11 @@
 		"start": "node --loader ts-node/esm dist/server.js",
 		"dev": "tsx --watch src/server.ts",
 		"test": "vitest",
-		"typeorm": "typeorm-ts-node-commonjs",
+		"typeorm": "typeorm-ts-node-esm",
 		"docker:postgres": "docker compose up postgres",
-		"migration:generate": "typeorm-ts-node-commonjs migration:generate -d ./src/database/data-source ./src/database/migrations/migration",
-		"migration:run": "npm run typeorm migration:run -- -d ./src/database/data-source",
-		"migration:revert": "npm run typeorm migration:revert -- -d ./src/database/data-source"
+		"migration:generate": "typeorm-ts-node-esm migration:generate -d ./src/database/data-source.js ./src/database/migrations/migration",
+		"migration:run": "npm run typeorm migration:run -- -d ./src/database/data-source.js",
+		"migration:revert": "npm run typeorm migration:revert -- -d ./src/database/data-source.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -50,7 +50,6 @@
 		"@types/node": "^20.14.10",
 		"@types/swagger-ui-express": "^4.1.6",
 		"ts-node": "^10.9.2",
-		"tsup": "^8.2.4",
 		"tsx": "^4.16.2",
 		"typescript": "^5.5.3",
 		"vitest": "^2.0.2"

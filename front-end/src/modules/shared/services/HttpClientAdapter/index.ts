@@ -7,7 +7,7 @@ import type {
 	IHttpClientAdapter,
 } from "./interfaces/IHttpClientAdapter";
 
-export class HttpClientAdapter implements IHttpClientAdapter {
+class HttpClientAdapter implements IHttpClientAdapter {
 	constructor(private readonly baseUrl: string) {}
 
 	public async request<R>(requestData: HttpRequest): Promise<HttpResponse<R>> {
@@ -34,5 +34,5 @@ export class HttpClientAdapter implements IHttpClientAdapter {
 	}
 }
 
-export const HttpFactory = (baseUrl: string): IHttpClientAdapter =>
+export const httpFactory = (baseUrl: string): IHttpClientAdapter =>
 	new HttpClientAdapter(baseUrl);

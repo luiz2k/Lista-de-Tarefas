@@ -23,9 +23,6 @@ class HttpClientAdapter implements IHttpClientAdapter {
 		});
 
 		const data = await response.json();
-		
-		console.log(data);
-		
 
 		if (data.statusCode === 401 && data.message === "Token inválido.") {
 			const query = createQueryString("status", "expired");

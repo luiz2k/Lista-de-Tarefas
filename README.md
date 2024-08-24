@@ -1,7 +1,7 @@
 # Lista de Tarefas
 A aplicação é uma ferramenta para gerenciar tarefas. Com ela, você pode criar, visualizar, editar e excluir tarefas.
 
-#### [✈️ VISITAR PROJETO](https://github.com/luiz2k/lista-de-tarefas)
+#### [✈️ VISITAR PROJETO](https://listadetarefas-luiz2k.vercel.app)
 
 ## 📖 Sobre o FRONT-END
 ![Demonstração do front-end](./imgs/front-end-demo.png)

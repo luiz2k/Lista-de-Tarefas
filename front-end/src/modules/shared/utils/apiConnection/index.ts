@@ -1,4 +1,4 @@
-import { HttpFactory } from "@/modules/shared/services/httpClientAdapter/index";
+import { httpFactory } from "../../services/httpClientAdapter";
 import { env } from "../../validations/envValidation";
 
-export const API = HttpFactory(env.API_BASE_URL);
+export const API = httpFactory(env.API_BASE_URL);

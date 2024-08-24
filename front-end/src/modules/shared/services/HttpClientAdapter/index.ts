@@ -34,5 +34,5 @@ class HttpClientAdapter implements IHttpClientAdapter {
 	}
 }
 
-export const HttpFactory = (baseUrl: string): IHttpClientAdapter =>
+export const httpFactory = (baseUrl: string): IHttpClientAdapter =>
 	new HttpClientAdapter(baseUrl);

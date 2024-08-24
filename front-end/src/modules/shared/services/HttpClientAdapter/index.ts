@@ -7,7 +7,7 @@ import type {
 	IHttpClientAdapter,
 } from "./interfaces/IHttpClientAdapter";
 
-export class HttpClientAdapter implements IHttpClientAdapter {
+class HttpClientAdapter implements IHttpClientAdapter {
 	constructor(private readonly baseUrl: string) {}
 
 	public async request<R>(requestData: HttpRequest): Promise<HttpResponse<R>> {

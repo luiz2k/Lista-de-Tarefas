@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import type { NextFunction, Request, Response } from "express";
-import type { GenericError } from "../helpers/errorHandler.js";
+import type { GenericError } from "../helpers/errorHandler";
 
 class ErrorMiddleware {
 	public handle(

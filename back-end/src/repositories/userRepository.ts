@@ -1,11 +1,8 @@
-import { AppDataSource } from "../database/data-source.js";
-import { User } from "../database/entities/userEntity.js";
+import { AppDataSource } from "../database/data-source";
+import { User } from "../database/entities/userEntity";
 
-import type { UserInput } from "../types/user.js";
-import type {
-	IUserRepository,
-	UserOutput,
-} from "./interfaces/IUserRepository.js";
+import type { UserInput } from "../types/user";
+import type { IUserRepository, UserOutput } from "./interfaces/IUserRepository";
 
 export class UserRepository implements IUserRepository {
 	userRepository = AppDataSource.getRepository(User);

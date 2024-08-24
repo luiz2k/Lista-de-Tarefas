@@ -1,4 +1,4 @@
-import type { GenerateTokenOutput } from "../../types/jwt.js";
+import type { GenerateTokenOutput } from "../../types/jwt";
 
 export type LoginInput = {
 	email: string;

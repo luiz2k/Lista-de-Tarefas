@@ -1,9 +1,9 @@
-import { AppDataSource } from "../database/data-source.js";
-import { Task } from "../database/entities/taskEntity.js";
-import { User } from "../database/entities/userEntity.js";
+import { AppDataSource } from "../database/data-source";
+import { Task } from "../database/entities/taskEntity";
+import { User } from "../database/entities/userEntity";
 
-import type { TaskInput, TaskOutput, UpdateTaskInput } from "../types/task.js";
-import type { ITaskRepository } from "./interfaces/ITaskRepository.js";
+import type { TaskInput, TaskOutput, UpdateTaskInput } from "../types/task";
+import type { ITaskRepository } from "./interfaces/ITaskRepository";
 
 export class TaskRepository implements ITaskRepository {
 	taskRepository = AppDataSource.getRepository(Task);

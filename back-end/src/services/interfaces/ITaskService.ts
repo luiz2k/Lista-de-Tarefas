@@ -1,4 +1,4 @@
-import type { TaskInput, TaskOutput, UpdateTaskInput } from "../../types/task.js";
+import type { TaskInput, TaskOutput, UpdateTaskInput } from "../../types/task";
 
 export interface ITaskService {
 	create(data: TaskInput): Promise<TaskOutput>;

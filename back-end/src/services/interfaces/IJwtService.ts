@@ -1,4 +1,4 @@
-import type { GenerateTokenOutput, Payload } from "../../types/jwt.js";
+import type { GenerateTokenOutput, Payload } from "../../types/jwt";
 
 export interface IJwtService {
 	verifyToken(token: string): Promise<Payload | false>;

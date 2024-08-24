@@ -1,12 +1,12 @@
-import { BadRequestError } from "../helpers/errorHandler.js";
+import { BadRequestError } from "../helpers/errorHandler";
 import {
 	createTaskSchema,
 	updateTaskSchema,
-} from "../validations/taskValidation.js";
+} from "../validations/taskValidation";
 
 import type { Request, Response } from "express";
-import type { ITaskService } from "../services/interfaces/ITaskService.js";
-import { uuidSchema } from "../validations/uuidValidation.js";
+import type { ITaskService } from "../services/interfaces/ITaskService";
+import { uuidSchema } from "../validations/uuidValidation";
 
 export class TaskController {
 	constructor(private readonly taskService: ITaskService) {}

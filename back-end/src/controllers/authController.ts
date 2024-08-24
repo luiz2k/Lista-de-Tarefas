@@ -1,8 +1,8 @@
-import { BadRequestError, UnauthorizedError } from "../helpers/errorHandler.js";
-import { loginSchema, refreshTokenSchema } from "../validations/authValidation.js";
+import { BadRequestError, UnauthorizedError } from "../helpers/errorHandler";
+import { loginSchema, refreshTokenSchema } from "../validations/authValidation";
 
 import type { Request, Response } from "express";
-import type { IAuthService } from "../services/interfaces/IAuthService.js";
+import type { IAuthService } from "../services/interfaces/IAuthService";
 
 export class AuthController {
 	constructor(private readonly authService: IAuthService) {}

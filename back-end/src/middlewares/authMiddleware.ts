@@ -1,9 +1,9 @@
-import { UnauthorizedError } from "../helpers/errorHandler.js";
-import { JwtRepository } from "../repositories/jwtRepository.js";
-import { JwtService } from "../services/jwtService.js";
+import { UnauthorizedError } from "../helpers/errorHandler";
+import { JwtRepository } from "../repositories/jwtRepository";
+import { JwtService } from "../services/jwtService";
 
 import type { NextFunction, Request, Response } from "express";
-import type { IJwtService } from "../services/interfaces/IJwtService.js";
+import type { IJwtService } from "../services/interfaces/IJwtService";
 
 class AuthMiddleware {
 	constructor(private readonly jwtService: IJwtService) {}

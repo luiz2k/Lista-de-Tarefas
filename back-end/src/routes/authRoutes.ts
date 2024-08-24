@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { UserRepository } from "../repositories/userRepository.js";
-import { JwtService } from "../services/jwtService.js";
-import { JwtRepository } from "../repositories/jwtRepository.js";
-import { AuthController } from "../controllers/authController.js";
-import { AuthService } from "../services/authService.js";
+import { AuthController } from "../controllers/authController";
+import { JwtRepository } from "../repositories/jwtRepository";
+import { UserRepository } from "../repositories/userRepository";
+import { AuthService } from "../services/authService";
+import { JwtService } from "../services/jwtService";
 
 class AuthRoutes {
 	private router: Router;

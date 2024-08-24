@@ -1,8 +1,8 @@
-import { schemas } from "./components/schemas.js";
-import { securitySchemes } from "./components/securitySchemes.js";
-import { auth } from "./paths/auth.js";
-import { task } from "./paths/task.js";
-import { user } from "./paths/user.js";
+import { schemas } from "./components/schemas";
+import { securitySchemes } from "./components/securitySchemes";
+import { auth } from "./paths/auth";
+import { task } from "./paths/task";
+import { user } from "./paths/user";
 
 export const swaggerDocument = {
 	openapi: "3.0.3",

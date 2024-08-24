@@ -1,11 +1,11 @@
 import "dotenv/config";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { env } from "../validations/envValidation.js";
-import { RefreshToken, RevokedToken } from "./entities/jwtEntity.js";
-import { Task } from "./entities/taskEntity.js";
-import { User } from "./entities/userEntity.js";
-import { Migration1724096667962 } from "./migrations/1724096667962-migration.js";
+import { env } from "../validations/envValidation";
+import { RefreshToken, RevokedToken } from "./entities/jwtEntity";
+import { Task } from "./entities/taskEntity";
+import { User } from "./entities/userEntity";
+import { Migration1724096667962 } from "./migrations/1724096667962-migration";
 
 export const AppDataSource = new DataSource({
 	type: "postgres",

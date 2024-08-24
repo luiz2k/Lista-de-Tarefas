@@ -1,11 +1,11 @@
 import "dotenv/config";
 import "express-async-errors";
-import { App } from "./app.js";
-import { AppDataSource } from "./database/data-source.js";
-import { authRoutes } from "./routes/authRoutes.js";
-import { taskRoutes } from "./routes/taskRoutes.js";
-import { userRoutes } from "./routes/userRoute.js";
-import { env } from "./validations/envValidation.js";
+import { App } from "./app";
+import { AppDataSource } from "./database/data-source";
+import { authRoutes } from "./routes/authRoutes";
+import { taskRoutes } from "./routes/taskRoutes";
+import { userRoutes } from "./routes/userRoute";
+import { env } from "./validations/envValidation";
 
 async function main(): Promise<void> {
 	try {

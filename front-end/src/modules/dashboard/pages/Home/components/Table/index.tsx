@@ -15,6 +15,8 @@ import { TableData } from "./components/TableData";
 export function TaskTable() {
 	const { tasksFound } = useContext(HomeContext);
 
+	console.log(tasksFound);
+
 	return (
 		<div className="border rounded-md bg-background">
 			<Table className="whitespace-nowrap">
@@ -31,7 +33,7 @@ export function TaskTable() {
 					{tasksFound.length ? (
 						<>
 							{tasksFound.map((task) => (
-								<TableData key={task._id} task={task} />
+								<TableData key={task.id} task={task} />
 							))}
 						</>
 					) : (

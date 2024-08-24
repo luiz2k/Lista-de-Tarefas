@@ -8,8 +8,7 @@ export type UpdateTask = {
 };
 
 export type Task = {
-	_id: string;
-	userId: string;
+	id: string;
 	task: string;
 	completed: boolean;
 	createdAt: string;

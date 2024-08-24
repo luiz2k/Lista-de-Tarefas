@@ -8,7 +8,7 @@ import type { TableRowsProps } from "./types";
 
 export function TableData({ task }: TableRowsProps) {
 	return (
-		<TableRow key={task._id}>
+		<TableRow key={task.id}>
 			<TableCell className="font-medium">
 				{task.completed ? (
 					<span className="line-through">{task.task}</span>
@@ -34,11 +34,11 @@ export function TableData({ task }: TableRowsProps) {
 			<TableCell>{new Date(task.createdAt).toLocaleDateString()}</TableCell>
 
 			<TableCell className="gap-x-2.5 flex items-center justify-center">
-				<TableControlUpdate task={task.task} taskId={task._id} />
+				<TableControlUpdate task={task.task} taskId={task.id} />
 
-				<TableControlStatus taskId={task._id} completed={task.completed} />
+				<TableControlStatus taskId={task.id} completed={task.completed} />
 
-				<TableControlDelete taskId={task._id} />
+				<TableControlDelete taskId={task.id} />
 			</TableCell>
 		</TableRow>
 	);

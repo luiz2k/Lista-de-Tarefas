@@ -7,22 +7,19 @@ import type { Task } from "../../../../types";
 
 const tasks: Task[] = [
 	{
-		_id: "task1",
-		userId: "user1",
+		id: "task1",
 		task: "Tarefa 1",
 		completed: false,
 		createdAt: "2023-01-01T00:00:00.000Z",
 	},
 	{
-		_id: "task2",
-		userId: "user2",
+		id: "task2",
 		task: "Tarefa 2",
 		completed: true,
 		createdAt: "2023-01-02T00:00:00.000Z",
 	},
 	{
-		_id: "task3",
-		userId: "user1",
+		id: "task3",
 		task: "Tarefa 3",
 		completed: false,
 		createdAt: "2023-01-03T00:00:00.000Z",

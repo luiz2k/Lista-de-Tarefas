@@ -2,6 +2,10 @@ import "dotenv/config";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { env } from "../validations/envValidation.js";
+import { RefreshToken, RevokedToken } from "./entities/jwtEntity.js";
+import { Task } from "./entities/taskEntity.js";
+import { User } from "./entities/userEntity.js";
+import { Migration1724096667962 } from "./migrations/1724096667962-migration.js";
 
 export const AppDataSource = new DataSource({
 	type: "postgres",
@@ -15,6 +19,6 @@ export const AppDataSource = new DataSource({
 	ssl: {
 		rejectUnauthorized: false,
 	},
-	entities: ["./src/database/entities/*{.ts,.js}"],
-	migrations: ["./src/database/migrations/*{.ts,.js}"],
+	entities: [User, Task, RefreshToken, RevokedToken],
+	migrations: [Migration1724096667962],
 });

@@ -1,9 +1,9 @@
-import { getAllTasks } from "./actions";
 import { CreateTask } from "./components/CreateTask";
 import { Filter } from "./components/Filter";
 import { Header } from "./components/Header";
 import { TaskTable } from "./components/Table";
 import { HomeContextProvider } from "./context";
+import { getAllTasks } from "./services";
 
 export async function HomePage() {
 	const tasks = await getAllTasks();

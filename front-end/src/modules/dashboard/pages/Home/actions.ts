@@ -4,23 +4,7 @@ import { getSession } from "@/modules/shared/helpers/getSession";
 import { API } from "@/modules/shared/utils/apiConnection";
 import { revalidatePath, revalidateTag } from "next/cache";
 
-import type { HttpResponse } from "@/modules/shared/services/httpClientAdapter/interfaces/IHttpClientAdapter";
-import type { CreateTask, Task, UpdateTask } from "./types";
-
-export const getAllTasks = async (): Promise<HttpResponse<Task[]>> => {
-	const session = getSession();
-
-	const response = await API.request<Task[]>({
-		method: "GET",
-		path: "/task",
-		headers: {
-			Authorization: `Bearer ${session?.access?.token}`,
-		},
-		tag: "getAllTasks",
-	});
-
-	return response;
-};
+import type { CreateTask, UpdateTask } from "./types";
 
 export const createTask = async (data: CreateTask): Promise<void> => {
 	const session = getSession();

@@ -5,6 +5,7 @@ import { JwtService } from "../services/jwtService";
 import type { NextFunction, Request, Response } from "express";
 import type { IJwtService } from "../services/interfaces/IJwtService";
 
+// Middleware de autenticação
 class AuthMiddleware {
 	constructor(private readonly jwtService: IJwtService) {}
 

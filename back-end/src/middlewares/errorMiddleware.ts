@@ -3,6 +3,7 @@
 import type { NextFunction, Request, Response } from "express";
 import type { GenericError } from "../helpers/errorHandler";
 
+// Middleware de tratamento de erros
 class ErrorMiddleware {
 	public handle(
 		error: Error & GenericError,

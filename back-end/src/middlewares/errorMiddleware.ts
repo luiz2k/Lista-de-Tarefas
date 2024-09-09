@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import type { NextFunction, Request, Response } from "express";
 import type { GenericError } from "../helpers/errorHandler";
 
@@ -17,6 +15,8 @@ class ErrorMiddleware {
 		const message: string = error.statusCode
 			? error.message
 			: "Erro interno do servidor.";
+
+		console.error(error);
 
 		return res.status(error.statusCode).json({
 			statusCode: statusCode,

@@ -1,8 +1,12 @@
+// Classes responsável por gerar instâncias de erros de acordo com o tipo de erro
+
 import { formatZodErrors } from "./formatZodErrors";
 
 import type { ZodIssue } from "zod";
 import type { ZodErrors } from "../types/error";
 
+
+// Classe base para todos os outros tipos de erros
 export class GenericError extends Error {
 	public readonly zodErrors: ZodErrors[] | undefined;
 

@@ -9,12 +9,14 @@ import { env } from "./validations/envValidation";
 
 async function main(): Promise<void> {
 	try {
+		// Faz a conexão com o banco de dados
 		await AppDataSource.initialize();
 
 		const app = new App();
 
 		app.config(env.CORS);
 
+		// Configura as rotas do projeto
 		app.routes("/user", userRoutes.getRoutes());
 		app.routes("/auth", authRoutes.getRoutes());
 		app.routes("/task", taskRoutes.getRoutes());

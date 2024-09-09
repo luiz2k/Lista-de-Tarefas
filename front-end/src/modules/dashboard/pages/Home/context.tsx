@@ -10,6 +10,7 @@ export const HomeContext = createContext<HomeContextType>(
 	{} as HomeContextType,
 );
 
+// Contexto responsável pelo state das tarefas
 export function HomeContextProvider({
 	children,
 	tasks,
@@ -30,12 +31,17 @@ export function HomeContextProvider({
 				? false
 				: "all";
 
+	// Verifica se a query da url é `completed` ou `pending`
 	const completeOrPending: boolean = filter === true || filter === false;
 
+	// Se `completeOrPending` for verdadeiro, filtra as tarefas pela query da url
+	// Se não, retorna todas as tarefas
 	const filteredTasks = completeOrPending
 		? tasks.filter((task) => task.completed === filter)
 		: tasks;
 
+	// Se `searchDebounce` tiver conteúdo, filtra as tarefas pelo conteúdo
+	// Se não, retorna todas as tarefas
 	const tasksFound = filteredTasks.filter((task) =>
 		task.task.toLowerCase().includes(searchDebounce.toLowerCase()),
 	);

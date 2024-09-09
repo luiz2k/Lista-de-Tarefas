@@ -22,12 +22,15 @@ import { login } from "./actions";
 import type { z } from "zod";
 import type { Messagens, Status } from "./types";
 
+// Página de login de usuário
 export function SignInPage() {
 	const router = useRouter();
 
+	// Verifica o status apartir do parâmetro da URL
 	const searchParams = useSearchParams();
 	const params = searchParams.get("status") as "created" | "expired";
 
+	// Feedbacks possíveis para ser exibido
 	const statusMessages: Messagens = {
 		default: {
 			message: "Digite seu email e senha para entrar",
@@ -43,8 +46,10 @@ export function SignInPage() {
 		},
 	};
 
+	// Cria o estado de acordo com o parâmetro da URL
 	const stateValue = statusMessages[params] || statusMessages.default;
 
+	// State responsável pelo feedback de erro/sucesso
 	const [status, setStatus] = useState<Status>(stateValue);
 
 	const form = useForm<z.infer<typeof loginSchema>>({
@@ -64,6 +69,7 @@ export function SignInPage() {
 			const errorMessage =
 				error instanceof Error ? error.message : "Ocorreu um erro inesperado.";
 
+			// Define o status de acordo com a resposta do back-end
 			setStatus({ message: errorMessage, color: "text-red-500" });
 		}
 	};
@@ -73,7 +79,7 @@ export function SignInPage() {
 			<div className="w-full max-w-md p-6 space-y-6 bg-card rounded-lg shadow-lg">
 				<div className="text-center">
 					<h1 className="text-3xl font-bold">Bem-vindo de volta</h1>
-					<p className={`text-muted-foreground ${status.color}`}>
+					<p className={`${status.color}`}>
 						{status.message}
 					</p>
 				</div>

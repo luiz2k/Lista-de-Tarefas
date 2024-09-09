@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// Hook para lidar com o debounce
 export function useDebounce<T>(value: T, delay = 500) {
 	const [debouncedValue, setDebouncedValue] = useState(value);
 

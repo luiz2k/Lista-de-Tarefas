@@ -25,6 +25,7 @@ import type { z } from "zod";
 export function SignUpPage() {
 	const router = useRouter();
 
+	// State responsável pelo feedback de erro/sucesso
 	const [message, setMessage] = useState({
 		message: "Preencha os dados abaixo para criar sua conta",
 		color: "",
@@ -51,6 +52,7 @@ export function SignUpPage() {
 			const errorMessage =
 				error instanceof Error ? error.message : "Ocorreu um erro inesperado.";
 
+			// Define o status de acordo com a resposta do back-end
 			setMessage({ message: errorMessage, color: "text-red-500" });
 		}
 	};

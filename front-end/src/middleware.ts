@@ -12,6 +12,7 @@ export default async function middleware(req: NextRequest) {
 
 		const authPage = pathname === "/registro" || pathname === "/entrar";
 
+		// Se não tiver uma sessão, redireciona para a tela de login
 		if (!session) {
 			if (authPage) {
 				return NextResponse.next();
@@ -20,6 +21,7 @@ export default async function middleware(req: NextRequest) {
 			return NextResponse.redirect(new URL("/entrar", req.url));
 		}
 
+		// Se tiver uma sessão, redireciona para a tela inicial
 		if (authPage) {
 			return NextResponse.redirect(new URL("/", req.url));
 		}
@@ -30,6 +32,7 @@ export default async function middleware(req: NextRequest) {
 
 		const tokenExpired = currentDate >= expiresIn - TWO_MINUTES;
 
+		// Se o token estiver expirado, atualiza a sessão
 		if (tokenExpired) {
 			const response = await refreshToken(session.refresh.token);
 

@@ -2,10 +2,6 @@ export const schemas = {
 	createUser: {
 		type: "object",
 		properties: {
-			username: {
-				type: "string",
-				description: "Nome do usuário.",
-			},
 			email: {
 				type: "string",
 				description: "Email do usuário.",
@@ -19,7 +15,7 @@ export const schemas = {
 				description: "Confirmação da senha do usuário.",
 			},
 		},
-		required: ["username", "email", "password", "confirmPassword"],
+		required: ["email", "password", "confirmPassword"],
 	},
 	createdUser: {
 		type: "object",
@@ -31,10 +27,6 @@ export const schemas = {
 			data: {
 				type: "object",
 				properties: {
-					username: {
-						type: "string",
-						description: "Nome do usuário.",
-					},
 					email: {
 						type: "string",
 						description: "Email do usuário.",
@@ -47,10 +39,6 @@ export const schemas = {
 	updateUser: {
 		type: "object",
 		properties: {
-			username: {
-				type: "string",
-				description: "Nome do usuário.",
-			},
 			email: {
 				type: "string",
 				description: "Email do usuário.",
@@ -71,10 +59,6 @@ export const schemas = {
 			data: {
 				type: "object",
 				properties: {
-					username: {
-						type: "string",
-						description: "Nome do usuário.",
-					},
 					email: {
 						type: "string",
 						description: "Email do usuário.",
@@ -105,9 +89,9 @@ export const schemas = {
 				type: "string",
 				description: "Nome da tarefa.",
 			},
-			completed: {
-				type: "boolean",
-				description: false,
+			status: {
+				type: "string",
+				enum: ["completed", "pending"],
 			},
 		},
 	},
@@ -131,9 +115,9 @@ export const schemas = {
 							type: "string",
 							description: "Nome da tarefa.",
 						},
-						completed: {
-							type: "boolean",
-							description: "Status da tarefa.",
+						status: {
+							type: "string",
+							enum: ["completed", "pending"],
 						},
 						createdAt: {
 							type: "string",
@@ -159,9 +143,9 @@ export const schemas = {
 						type: "string",
 						description: "Nome da tarefa.",
 					},
-					completed: {
-						type: "boolean",
-						description: "Status da tarefa.",
+					status: {
+						type: "string",
+						enum: ["completed", "pending"],
 					},
 				},
 			},
@@ -185,9 +169,9 @@ export const schemas = {
 						type: "string",
 						description: "Nome da tarefa.",
 					},
-					completed: {
-						type: "boolean",
-						description: "Status da tarefa.",
+					status: {
+						type: "string",
+						enum: ["completed", "pending"],
 					},
 					createdAt: {
 						type: "string",

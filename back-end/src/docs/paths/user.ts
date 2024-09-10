@@ -13,7 +13,6 @@ export const user = {
 						examples: {
 							user: {
 								value: {
-									username: "John Doe",
 									email: "Hx1Jt@example.com",
 									password: "123456",
 									confirmPassword: "123456",

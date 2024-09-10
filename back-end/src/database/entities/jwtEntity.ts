@@ -9,10 +9,10 @@ export class RefreshToken {
 	@Column({ type: "varchar" })
 	token: string;
 
-	@Column({ name: "created_at", type: "date" })
+	@Column({ name: "created_at", type: "timestamp" })
 	createdAt: Date;
 
-	@Column({ name: "expires_at", type: "date" })
+	@Column({ name: "expires_at", type: "timestamp" })
 	expiresAt: Date;
 
 	@ManyToOne(
@@ -30,7 +30,7 @@ export class RevokedToken {
 	@Column({ type: "varchar" })
 	token: string;
 
-	@Column({ name: "revoked_at", type: "date" })
+	@Column({ name: "revoked_at", type: "timestamp" })
 	revokedAt: Date;
 
 	@ManyToOne(

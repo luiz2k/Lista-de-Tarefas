@@ -2,7 +2,6 @@ import type { UserInput } from "../../types/user";
 
 export type UserOutput = {
 	id: string;
-	username: string;
 	email: string;
 	password: string;
 };

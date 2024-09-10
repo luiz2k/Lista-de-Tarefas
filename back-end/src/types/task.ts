@@ -1,3 +1,8 @@
+export enum TaskStatus {
+	Pending = "pending",
+	Completed = "completed",
+}
+
 export type TaskInput = {
 	userId: string;
 	task: string;
@@ -6,7 +11,7 @@ export type TaskInput = {
 export type TaskOutput = {
 	id: string;
 	task: string;
-	completed: boolean;
+	status: TaskStatus;
 	createdAt: Date;
 	user: {
 		id: string;
@@ -15,5 +20,5 @@ export type TaskOutput = {
 
 export type UpdateTaskInput = {
 	task?: string;
-	completed?: boolean;
+	status?: TaskStatus;
 };

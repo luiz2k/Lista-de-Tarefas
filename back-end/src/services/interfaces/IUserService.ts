@@ -1,7 +1,6 @@
 import type { UserInput } from "../../types/user";
 
 export type UserOutput = {
-	username: string;
 	email: string;
 };
 

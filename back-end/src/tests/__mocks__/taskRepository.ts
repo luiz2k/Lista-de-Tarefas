@@ -1,7 +1,12 @@
 import { randomUUID } from "node:crypto";
 
 import type { ITaskRepository } from "../../repositories/interfaces/ITaskRepository";
-import type { TaskInput, TaskOutput, UpdateTaskInput } from "../../types/task";
+import {
+	type TaskInput,
+	type TaskOutput,
+	TaskStatus,
+	type UpdateTaskInput,
+} from "../../types/task";
 
 export class TaskRepository implements ITaskRepository {
 	tasks: TaskOutput[] = [];
@@ -10,7 +15,7 @@ export class TaskRepository implements ITaskRepository {
 		const task = {
 			id: randomUUID(),
 			task: data.task,
-			completed: false,
+			status: TaskStatus.Pending,
 			createdAt: new Date(),
 			user: {
 				id: data.userId,

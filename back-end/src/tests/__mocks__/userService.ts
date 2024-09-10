@@ -19,7 +19,6 @@ export class UserService implements IUserService {
 		const user = await this.userRepository.create(data);
 
 		return {
-			username: user.username,
 			email: user.email,
 		};
 	}
@@ -32,7 +31,6 @@ export class UserService implements IUserService {
 		}
 
 		return {
-			username: user.username,
 			email: user.email,
 		};
 	}

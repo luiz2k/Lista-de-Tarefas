@@ -21,7 +21,6 @@ describe("userController", () => {
 		it("Deve criar um usuário", async () => {
 			const req: Partial<Request> = {
 				body: {
-					username: "Example",
 					email: "example2@ex.com",
 					password: "123456",
 					confirmPassword: "123456",
@@ -39,7 +38,6 @@ describe("userController", () => {
 			expect(res.json).toHaveBeenCalledWith({
 				message: "Usuário criado com sucesso.",
 				data: {
-					username: req.body.username,
 					email: req.body.email,
 				},
 			});
@@ -48,7 +46,6 @@ describe("userController", () => {
 		it("Deve ocorrer um erro validação dos dados do body", async () => {
 			const req: Partial<Request> = {
 				body: {
-					username: "Example",
 					email: "example2@ex.com",
 					password: "123456",
 					confirmPassword: "12345678",

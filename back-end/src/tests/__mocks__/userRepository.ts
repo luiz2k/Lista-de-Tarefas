@@ -11,7 +11,6 @@ export class UserRepository implements IUserRepository {
 	users: UserOutput[] = [
 		{
 			id: randomUUID(),
-			username: "Example",
 			email: "example@ex.com",
 			password: bcrypt.hashSync("123456", 10),
 		},
@@ -20,7 +19,6 @@ export class UserRepository implements IUserRepository {
 	async create(data: UserInput): Promise<UserOutput> {
 		const newUser = {
 			id: randomUUID(),
-			username: "Example",
 			email: data.email,
 			password: bcrypt.hashSync(data.password, 10),
 		};

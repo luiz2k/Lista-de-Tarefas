@@ -7,6 +7,7 @@ import { TaskController } from "../taskController";
 import type { Request, Response } from "express";
 import type { ITaskRepository } from "../../repositories/interfaces/ITaskRepository";
 import type { ITaskService } from "../../services/interfaces/ITaskService";
+import { TaskStatus } from "../../types/task";
 
 describe("taskController", () => {
 	let taskRepository: ITaskRepository;
@@ -49,7 +50,7 @@ describe("taskController", () => {
 					message: "Tarefa criada com sucesso.",
 					data: expect.objectContaining({
 						id: expect.any(String),
-						completed: false,
+						status: "pending",
 						createdAt: expect.any(Date),
 						task: req.body.task,
 						user: expect.objectContaining({
@@ -94,7 +95,7 @@ describe("taskController", () => {
 				Promise.resolve({
 					id: taskId,
 					task: "Tarefa 1",
-					completed: false,
+					status: TaskStatus.Pending,
 					createdAt: new Date(),
 					user: {
 						id: userId,
@@ -127,7 +128,7 @@ describe("taskController", () => {
 				message: "Tarefa encontrada.",
 				data: {
 					id: taskId,
-					completed: false,
+					status: TaskStatus.Pending,
 					createdAt: expect.any(Date),
 					task: "Tarefa 1",
 					user: {
@@ -204,7 +205,7 @@ describe("taskController", () => {
 				data: expect.arrayContaining([
 					{
 						id: expect.any(String),
-						completed: expect.any(Boolean),
+						status: expect.any(String),
 						createdAt: expect.any(Date),
 						task: req.body.task,
 						user: expect.objectContaining({

@@ -33,16 +33,4 @@ export class UserRepository implements IUserRepository {
 
 		return user || null;
 	}
-
-	findById(_id: string): Promise<UserOutput | null> {
-		throw new Error("Method not implemented.");
-	}
-
-	update(_id: string, _user: Partial<UserInput>): Promise<void> {
-		throw new Error("Method not implemented.");
-	}
-
-	remove(_id: string): Promise<void> {
-		throw new Error("Method not implemented.");
-	}
 }

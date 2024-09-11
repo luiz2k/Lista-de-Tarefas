@@ -45,6 +45,9 @@ export class TaskRepository implements ITaskRepository {
 					id: userId,
 				},
 			},
+			order: {
+				createdAt: "ASC",
+			},
 		});
 
 		return tasks;

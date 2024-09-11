@@ -21,31 +21,29 @@ export function HomeContextProvider({
 	const [search, setSearch] = useState<string>("");
 	const searchDebounce = useDebounce<string>(search);
 
+	// Obtém o valor do parâmetro `filter` da url
 	const searchParams = useSearchParams();
 	const searchParam = searchParams?.get("filter");
 
-	const filter =
-		searchParam === "completed"
-			? true
-			: searchParam === "pending"
-				? false
-				: "all";
-
 	// Verifica se a query da url é `completed` ou `pending`
-	const completeOrPending: boolean = filter === true || filter === false;
+	const completeOrPending: boolean =
+		searchParam === "completed" || searchParam === "pending";
 
-	// Se `completeOrPending` for verdadeiro, filtra as tarefas pela query da url
+	// Se `completeOrPending` for verdadeiro, filtra as tarefas pelo parâmetro da url
 	// Se não, retorna todas as tarefas
 	const filteredTasks = completeOrPending
-		? tasks.filter((task) => task.completed === filter)
+		? tasks.filter((task) => task.status === searchParam)
 		: tasks;
 
 	// Se `searchDebounce` tiver conteúdo, filtra as tarefas pelo conteúdo
-	// Se não, retorna todas as tarefas
-	const tasksFound = filteredTasks.filter((task) =>
-		task.task.toLowerCase().includes(searchDebounce.toLowerCase()),
-	);
+	// Se não, retorna todas as tarefas filtradas
+	const tasksFound = searchDebounce
+		? filteredTasks.filter((task) =>
+				task.task.toLowerCase().includes(searchDebounce.toLowerCase()),
+			)
+		: filteredTasks;
 
+	// Lida com a busca de tarefas
 	const handleSearch = (search: string) => {
 		setSearch(search);
 	};

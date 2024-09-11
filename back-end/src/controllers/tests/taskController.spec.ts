@@ -26,7 +26,7 @@ describe("taskController", () => {
 
 			const req: Partial<Request> = {
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},
@@ -108,7 +108,7 @@ describe("taskController", () => {
 					id: taskId,
 				},
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},
@@ -146,7 +146,7 @@ describe("taskController", () => {
 					id: "id inválido",
 				},
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},
@@ -169,7 +169,7 @@ describe("taskController", () => {
 
 			const req: Partial<Request> = {
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},
@@ -229,7 +229,7 @@ describe("taskController", () => {
 					id: taskId,
 				},
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},
@@ -265,7 +265,7 @@ describe("taskController", () => {
 					id: "id inválido",
 				},
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},
@@ -296,7 +296,7 @@ describe("taskController", () => {
 					id: taskId,
 				},
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},
@@ -326,7 +326,7 @@ describe("taskController", () => {
 					id: taskId,
 				},
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},
@@ -357,7 +357,7 @@ describe("taskController", () => {
 					id: "id inválido",
 				},
 				user: {
-					id: userId,
+					sub: userId,
 					iat: Date.now() / 1000,
 					exp: Date.now() / 1000,
 				},

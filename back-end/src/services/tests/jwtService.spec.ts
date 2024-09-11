@@ -28,10 +28,10 @@ describe("JwtService", () => {
 				return;
 			}
 
-			expect(isValidAcessToken).toHaveProperty("id");
+			expect(isValidAcessToken).toHaveProperty("sub");
 			expect(isValidAcessToken).toHaveProperty("iat");
 			expect(isValidAcessToken).toHaveProperty("exp");
-			expect(isValidAcessToken.id).toBeDefined();
+			expect(isValidAcessToken.sub).toBeDefined();
 			expect(isValidAcessToken.iat).toBeDefined();
 			expect(isValidAcessToken.exp).toBeDefined();
 
@@ -43,10 +43,10 @@ describe("JwtService", () => {
 				return;
 			}
 
-			expect(isValidRefreshToken).toHaveProperty("id");
+			expect(isValidRefreshToken).toHaveProperty("sub");
 			expect(isValidRefreshToken).toHaveProperty("iat");
 			expect(isValidRefreshToken).toHaveProperty("exp");
-			expect(isValidRefreshToken.id).toBeDefined();
+			expect(isValidRefreshToken.sub).toBeDefined();
 			expect(isValidRefreshToken.iat).toBeDefined();
 			expect(isValidRefreshToken.exp).toBeDefined();
 		});

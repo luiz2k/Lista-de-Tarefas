@@ -42,7 +42,7 @@ export class AuthService implements IAuthService {
 			throw new BadRequestError("Token inválido.");
 		}
 
-		const newToken = await this.jwtService.refreshToken(payload.id, token);
+		const newToken = await this.jwtService.refreshToken(payload.sub, token);
 
 		return newToken;
 	}

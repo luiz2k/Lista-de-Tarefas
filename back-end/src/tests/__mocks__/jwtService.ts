@@ -27,13 +27,13 @@ export class JwtService implements IJwtService {
 		const EXPIRES_IN_SEVEN_DAYS = TIMESTAMP_IN_SECONDS + 60 * 60 * 24 * 7;
 
 		const accessTokenPayload: Payload = {
-			id: userId,
+			sub: userId,
 			iat: TIMESTAMP_IN_SECONDS,
 			exp: EXPIRES_IN_ONE_HOUR,
 		};
 
 		const refreshTokenPayload: Payload = {
-			id: userId,
+			sub: userId,
 			iat: TIMESTAMP_IN_SECONDS,
 			exp: EXPIRES_IN_SEVEN_DAYS,
 		};

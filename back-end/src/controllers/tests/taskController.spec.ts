@@ -2,12 +2,12 @@ import { randomUUID } from "node:crypto";
 import { vi } from "vitest";
 import { TaskRepository } from "../../tests/__mocks__/taskRepository";
 import { TaskService } from "../../tests/__mocks__/taskService";
+import { TaskStatus } from "../../types/task";
 import { TaskController } from "../taskController";
 
 import type { Request, Response } from "express";
 import type { ITaskRepository } from "../../repositories/interfaces/ITaskRepository";
 import type { ITaskService } from "../../services/interfaces/ITaskService";
-import { TaskStatus } from "../../types/task";
 
 describe("taskController", () => {
 	let taskRepository: ITaskRepository;
@@ -235,7 +235,7 @@ describe("taskController", () => {
 				},
 				body: {
 					task: "Tarefa atualizada",
-					completed: true,
+					status: TaskStatus.Completed,
 				},
 			};
 

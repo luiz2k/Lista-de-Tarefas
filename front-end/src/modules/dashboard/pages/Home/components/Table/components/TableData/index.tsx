@@ -10,7 +10,7 @@ export function TableData({ task }: TableRowsProps) {
 	return (
 		<TableRow key={task.id}>
 			<TableCell className="font-medium">
-				{task.completed ? (
+				{task.status === "completed" ? (
 					<span className="line-through">{task.task}</span>
 				) : (
 					<p>{task.task}</p>
@@ -18,7 +18,7 @@ export function TableData({ task }: TableRowsProps) {
 			</TableCell>
 
 			<TableCell>
-				{task.completed === true ? (
+				{task.status === "completed" ? (
 					<span className="flex items-center gap-1.5">
 						<Check size="14" />
 						Concluído
@@ -36,7 +36,7 @@ export function TableData({ task }: TableRowsProps) {
 			<TableCell className="gap-x-2.5 flex items-center justify-center">
 				<TableControlUpdate task={task.task} taskId={task.id} />
 
-				<TableControlStatus taskId={task.id} completed={task.completed} />
+				<TableControlStatus taskId={task.id} status={task.status} />
 
 				<TableControlDelete taskId={task.id} />
 			</TableCell>

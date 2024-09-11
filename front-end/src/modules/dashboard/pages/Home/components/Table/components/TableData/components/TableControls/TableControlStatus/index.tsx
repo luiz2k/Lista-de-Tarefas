@@ -1,24 +1,28 @@
 import { CheckCheck } from "lucide-react";
 import { updateTask } from "../../../../../../../actions";
+import { TaskStatus } from "../../../../../../../types";
 
 import type { UpdateTask } from "../../../../../../../types";
 
 export function TableControlStatus({
 	taskId,
-	completed,
+	status,
 }: {
 	taskId: string;
-	completed: boolean;
+	status: TaskStatus;
 }) {
 	const handleTaskUpdate = async (userId: string, data: UpdateTask) => {
-		await updateTask(userId, data);
+		const newStatus =
+			data.status === "completed" ? TaskStatus.Pending : TaskStatus.Completed;
+
+		await updateTask(userId, { status: newStatus });
 	};
 	return (
 		<button
 			type="button"
 			onClick={() =>
 				handleTaskUpdate(taskId, {
-					completed: !completed,
+					status,
 				})
 			}
 			className="flex items-center justify-center gap-1.5 hover:underline"

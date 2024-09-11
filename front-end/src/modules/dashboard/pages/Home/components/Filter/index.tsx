@@ -12,17 +12,10 @@ export function Filter() {
 	const router = useRouter();
 	const pathname = usePathname();
 
-	const filter =
-		searchParam === "completed"
-			? true
-			: searchParam === "pending"
-				? false
-				: "all";
-
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 			<Button
-				variant={filter === "all" ? "default" : "outline"}
+				variant={searchParam === "all" ? "default" : "outline"}
 				onClick={() => {
 					router.push(`${pathname}?${createQueryString("filter", "all")}`);
 				}}
@@ -33,7 +26,7 @@ export function Filter() {
 			</Button>
 
 			<Button
-				variant={filter === true ? "default" : "outline"}
+				variant={searchParam === "completed" ? "default" : "outline"}
 				onClick={() => {
 					router.push(
 						`${pathname}?${createQueryString("filter", "completed")}`,
@@ -43,12 +36,12 @@ export function Filter() {
 			>
 				<span>Completas</span>
 				<span className="font-bold text-xl block">
-					{tasks.filter((task) => task.completed === true).length}
+					{tasks.filter((task) => task.status === "completed").length}
 				</span>
 			</Button>
 
 			<Button
-				variant={filter === false ? "default" : "outline"}
+				variant={searchParam === "pending" ? "default" : "outline"}
 				onClick={() => {
 					router.push(`${pathname}?${createQueryString("filter", "pending")}`);
 				}}
@@ -56,7 +49,7 @@ export function Filter() {
 			>
 				<span>Pendentes</span>
 				<span className="font-bold text-xl block">
-					{tasks.filter((task) => task.completed === false).length}
+					{tasks.filter((task) => task.status === "pending").length}
 				</span>
 			</Button>
 		</div>

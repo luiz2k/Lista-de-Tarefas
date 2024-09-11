@@ -9,7 +9,7 @@ export type GenerateTokenOutput = {
 };
 
 export type Payload = {
-	id: string;
+	sub: string;
 	iat: number;
 	exp: number;
 };

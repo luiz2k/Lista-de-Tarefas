@@ -32,14 +32,14 @@ export class JwtService implements IJwtService {
 
 		// Conteúdo do token de acesso
 		const accessTokenPayload: Payload = {
-			id: userId,
+			sub: userId,
 			iat: TIMESTAMP_IN_SECONDS,
 			exp: EXPIRES_IN_ONE_HOUR,
 		};
 
 		// Conteúdo do token de refresh
 		const refreshTokenPayload: Payload = {
-			id: userId,
+			sub: userId,
 			iat: TIMESTAMP_IN_SECONDS,
 			exp: EXPIRES_IN_SEVEN_DAYS,
 		};

@@ -12,7 +12,7 @@ export class TaskController {
 	constructor(private readonly taskService: ITaskService) {}
 
 	async create(req: Request, res: Response): Promise<Response> {
-		const userId = req.user?.id as string;
+		const userId = req.user?.sub as string;
 
 		const isValidData = createTaskSchema.safeParse(req.body);
 
@@ -31,7 +31,7 @@ export class TaskController {
 	}
 
 	async findOne(req: Request, res: Response): Promise<Response> {
-		const userId = req.user?.id as string;
+		const userId = req.user?.sub as string;
 
 		const isValidId = uuidSchema.safeParse(req.params.id);
 
@@ -50,7 +50,7 @@ export class TaskController {
 	}
 
 	async findAll(req: Request, res: Response): Promise<Response> {
-		const userId = req.user?.id as string;
+		const userId = req.user?.sub as string;
 
 		const tasks = await this.taskService.findAll(userId);
 
@@ -61,7 +61,7 @@ export class TaskController {
 	}
 
 	async update(req: Request, res: Response): Promise<Response> {
-		const userId = req.user?.id as string;
+		const userId = req.user?.sub as string;
 
 		const isValidId = uuidSchema.safeParse(req.params.id);
 
@@ -84,7 +84,7 @@ export class TaskController {
 	}
 
 	async remove(req: Request, res: Response): Promise<Response> {
-		const userId = req.user?.id as string;
+		const userId = req.user?.sub as string;
 
 		const isValidId = uuidSchema.safeParse(req.params.id);
 

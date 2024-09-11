@@ -1,16 +1,21 @@
+export enum TaskStatus {
+	Pending = "pending",
+	Completed = "completed",
+}
+
 export type CreateTask = {
 	task: string;
 };
 
 export type UpdateTask = {
 	task?: string;
-	completed?: boolean;
+	status?: TaskStatus;
 };
 
 export type Task = {
 	id: string;
 	task: string;
-	completed: boolean;
+	status: TaskStatus;
 	createdAt: string;
 };
 

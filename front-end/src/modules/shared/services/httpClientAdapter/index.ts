@@ -30,6 +30,10 @@ class HttpClientAdapter implements IHttpClientAdapter {
 			redirect(`/entrar?${query}`);
 		}
 
+		if (!response.ok) {
+			throw new Error(data.message);
+		}
+
 		return data;
 	}
 }

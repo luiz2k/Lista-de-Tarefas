@@ -8,13 +8,9 @@ import type { createUserSchema } from "../../../shared/validations/userValidatio
 export const createUser = async (
 	data: z.infer<typeof createUserSchema>,
 ): Promise<void> => {
-	const response = await API.request({
+	await API.request({
 		method: "POST",
 		path: "/user",
 		body: JSON.stringify(data),
 	});
-
-	if (response.statusCode === 409) {
-		throw new Error(response.message);
-	}
 };

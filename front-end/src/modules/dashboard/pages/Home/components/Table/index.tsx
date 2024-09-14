@@ -23,7 +23,7 @@ export function TaskTable() {
 						<TableHead className="w-1/3 min-w-[120px]">Tarefa</TableHead>
 						<TableHead className="w-1/3 min-w-[120px]">Status</TableHead>
 						<TableHead className="w-1/3 min-w-[120px]">Data</TableHead>
-						<TableHead className="w-1/3 min-w-[120px]" />
+						<TableHead className="w-1/3 min-w-[120px]">Ações</TableHead>
 					</TableRow>
 				</TableHeader>
 

@@ -18,7 +18,7 @@ class ErrorMiddleware {
 
 		console.error(error);
 
-		return res.status(error.statusCode).json({
+		return res.status(statusCode).json({
 			statusCode: statusCode,
 			message: message,
 			paths: zodErrors,

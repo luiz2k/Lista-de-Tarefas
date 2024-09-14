@@ -31,7 +31,7 @@ export function TableControlDelete({ taskId }: { taskId: string }) {
 					type="button"
 					className="flex items-center justify-center gap-1.5 hover:underline"
 				>
-					<Trash2 size="14" /> DELETAR
+					<Trash2 size="14" /> Apagar
 				</button>
 			</AlertDialogTrigger>
 			<AlertDialogContent className="sm:max-w-[425px] bottom-0 top-auto translate-y-0 sm:bottom-auto sm:top-[50%] sm:translate-y-[-50%]">

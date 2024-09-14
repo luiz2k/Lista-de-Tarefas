@@ -27,7 +27,7 @@ export function TableControlStatus({
 			}
 			className="flex items-center justify-center gap-1.5 hover:underline"
 		>
-			<CheckCheck size="14" /> STATUS
+			<CheckCheck size="14" /> Status
 		</button>
 	);
 }

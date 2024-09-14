@@ -72,7 +72,7 @@ export function TableControlUpdate({
 					onClick={() => handleEditTask(task)}
 					className="flex items-center justify-center gap-1.5 hover:underline"
 				>
-					<Pen size="14" /> EDITAR
+					<Pen size="14" /> Editar
 				</button>
 			</DialogTrigger>
 

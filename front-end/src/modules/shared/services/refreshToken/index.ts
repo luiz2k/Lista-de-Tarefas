@@ -5,20 +5,16 @@ import type { HttpResponse } from "../httpClientAdapter/interfaces/IHttpClientAd
 
 // Responsável por fazer o refresh do token
 export const refreshToken = async (
-	refreshToken: string,
+  refreshToken: string
 ): Promise<HttpResponse<Tokens>> => {
-	const response = await API.request<Tokens>({
-		method: "POST",
-		path: "/auth/refreshToken",
-		body: JSON.stringify({
-			refreshToken: refreshToken,
-		}),
-		cache: "no-store",
-	});
+  const response = await API.request<Tokens>({
+    method: "POST",
+    path: "/auth/refreshToken",
+    body: JSON.stringify({
+      refreshToken: refreshToken,
+    }),
+    cache: "no-store",
+  });
 
-	if (response.statusCode === 400 && response.message === "Token inválido.") {
-		throw response.message;
-	}
-
-	return response;
+  return response;
 };

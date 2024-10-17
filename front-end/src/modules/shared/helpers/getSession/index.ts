@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 
 import type { Tokens } from "@/modules/auth/pages/SignIn/types";
 
-// Obter os dados de sessão
+// Obtém os dados de sessão do usuário
 export const getSession = (): Tokens | null => {
 	try {
 		const sessionCookie = cookies().get("session")?.value;

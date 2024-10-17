@@ -1,5 +1,6 @@
 import z from "zod";
 
+// Validação o formulário de criação de tarefa
 export const createTaskSchema = z.object({
 	task: z
 		.string()

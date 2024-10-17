@@ -1,5 +1,6 @@
 import z from "zod";
 
+// Valida o formulário de cadastro
 export const createUserSchema = z
 	.object({
 		email: z

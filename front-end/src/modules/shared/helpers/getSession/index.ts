@@ -7,6 +7,7 @@ export const getSession = (): Tokens | null => {
 	try {
 		const sessionCookie = cookies().get("session")?.value;
 
+		// Se não houver sessão, lança uma excessão
 		if (!sessionCookie) {
 			throw Error;
 		}

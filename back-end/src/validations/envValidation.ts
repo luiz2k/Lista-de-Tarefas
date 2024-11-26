@@ -9,7 +9,7 @@ const envSchema = z.object({
 	DB_PORT: z.string().transform((port) => Number(port)),
 	DB_USERNAME: z.string(),
 	DB_PASSWORD: z.string(),
-	DB_DATABASE: z.string(),
+	DB_NAME: z.string(),
 });
 
 export const env = envSchema.parse(process.env);

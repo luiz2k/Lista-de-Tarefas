@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
 	port: env.DB_PORT,
 	username: env.DB_USERNAME,
 	password: env.DB_PASSWORD,
-	database: env.DB_DATABASE,
+	database: env.DB_NAME,
 	synchronize: false,
 	logging: false,
 	ssl: sslConfiguration,

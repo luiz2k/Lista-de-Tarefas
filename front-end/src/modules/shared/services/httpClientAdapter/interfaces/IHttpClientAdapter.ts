@@ -10,6 +10,7 @@ export type HttpRequest = {
 export type HttpResponse<R> = {
 	statusCode: number;
 	message: string;
+	error?: boolean;
 	data: R;
 };
 

@@ -42,7 +42,11 @@ export function SignUpPage() {
 
 	const onSubmit = async (data: z.infer<typeof createUserSchema>) => {
 		try {
-			await createUser(data);
+			const response = await createUser(data);
+
+			if (response?.error) {
+				throw new Error(response.message);
+			}
 
 			const query = createQueryString("status", "created");
 

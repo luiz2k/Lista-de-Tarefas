@@ -62,7 +62,11 @@ export function SignInPage() {
 
 	const onSubmit = async (data: z.infer<typeof loginSchema>) => {
 		try {
-			await login(data);
+			const response = await login(data);
+
+			if (response?.error) {
+				throw new Error(response.message);
+			}
 
 			router.push("/");
 		} catch (error) {
@@ -79,9 +83,7 @@ export function SignInPage() {
 			<div className="w-full max-w-md p-6 space-y-6 bg-card rounded-lg shadow-lg">
 				<div className="text-center">
 					<h1 className="text-3xl font-bold">Bem-vindo de volta</h1>
-					<p className={`${status.color}`}>
-						{status.message}
-					</p>
+					<p className={`${status.color}`}>{status.message}</p>
 				</div>
 
 				<Form {...form}>

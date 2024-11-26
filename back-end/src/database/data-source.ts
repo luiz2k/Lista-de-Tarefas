@@ -4,7 +4,9 @@ import { DataSource } from "typeorm";
 import { env } from "../validations/envValidation";
 
 const sslConfiguration =
-	process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false;
+    process.env.NODE_ENV === "production"
+        ? { rejectUnauthorized: false } // SSL em produção
+        : undefined; // Sem SSL em desenvolvimento
 
 export const AppDataSource = new DataSource({
 	type: "postgres",

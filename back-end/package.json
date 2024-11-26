@@ -35,11 +35,6 @@
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
-		"@anatine/esbuild-decorators": "^0.2.19",
-		"@babel/cli": "^7.24.8",
-		"@babel/core": "^7.25.2",
-		"@babel/preset-env": "^7.25.4",
-		"@babel/preset-typescript": "^7.24.7",
 		"@biomejs/biome": "^1.8.3",
 		"@types/bcrypt": "^5.0.2",
 		"@types/cors": "^2.8.17",
